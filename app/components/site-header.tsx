@@ -3,7 +3,23 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function SiteHeader() {
+type NavItem = {
+  href: string;
+  label: string;
+  variant?: "link" | "button";
+};
+
+const defaultNavItems: NavItem[] = [
+  { href: "/", label: "About Us" },
+  { href: "/ourprogram", label: "Our Program" },
+  { href: "/join", label: "Apply", variant: "button" },
+];
+
+export default function SiteHeader({
+  navItems = defaultNavItems,
+}: {
+  navItems?: NavItem[];
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -39,25 +55,20 @@ export default function SiteHeader() {
           ImpactCorps
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium text-[color:var(--ink)]/70 md:flex">
-          <a href="#mission" className="hover:text-[color:var(--ink)]">
-            Mission
-          </a>
-          <a href="#approach" className="hover:text-[color:var(--ink)]">
-            Approach
-          </a>
-          <a href="#program" className="hover:text-[color:var(--ink)]">
-            Program
-          </a>
-          <a href="#theory" className="hover:text-[color:var(--ink)]">
-            Theory of Change
-          </a>
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={
+                item.variant === "button"
+                  ? "button-primary rounded-full px-5 py-2 text-sm font-semibold"
+                  : "hover:text-[color:var(--ink)]"
+              }
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
-        <Link
-          href="/join"
-          className="button-primary rounded-full px-5 py-2 text-sm font-semibold"
-        >
-          Apply
-        </Link>
       </div>
     </header>
   );

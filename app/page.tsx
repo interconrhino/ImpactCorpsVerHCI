@@ -275,7 +275,7 @@ export default function Home() {
         id="program"
         className="mx-auto w-full max-w-6xl px-6 pb-16"
       >
-        <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-[color:var(--mist)] px-8 py-10">
+        <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-[#e9f1f7] px-8 py-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="space-y-3">
               <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
@@ -367,14 +367,8 @@ export default function Home() {
                 href="/join"
                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[color:var(--forest)]"
               >
-                Express interest
+                Apply
               </Link>
-              <a
-                href="#mission"
-                className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white"
-              >
-                Revisit the mission
-              </a>
             </div>
           </div>
         </div>
