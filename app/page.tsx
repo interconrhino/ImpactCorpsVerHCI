@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteHeader from "./components/site-header";
 
 export default function Home() {
   const competencies = [
@@ -76,34 +77,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <div className="relative overflow-hidden">
+      <SiteHeader />
+      <div className="relative overflow-hidden -mt-24 pt-24">
         <div className="pointer-events-none absolute -top-48 left-1/2 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.45),rgba(243,199,126,0))] blur-3xl" />
         <div className="pointer-events-none absolute -left-24 top-24 h-[360px] w-[360px] rounded-full bg-[radial-gradient(closest-side,rgba(31,90,70,0.25),rgba(31,90,70,0))] blur-2xl" />
-        <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pb-6 pt-8">
-          <Link href="/" className="text-2xl font-semibold tracking-tight">
-            ImpactCorps
-          </Link>
-          <nav className="hidden items-center gap-6 text-sm font-medium text-[color:var(--ink)]/70 md:flex">
-            <a href="#mission" className="hover:text-[color:var(--ink)]">
-              Mission
-            </a>
-            <a href="#approach" className="hover:text-[color:var(--ink)]">
-              Approach
-            </a>
-            <a href="#program" className="hover:text-[color:var(--ink)]">
-              Program
-            </a>
-            <a href="#theory" className="hover:text-[color:var(--ink)]">
-              Theory of Change
-            </a>
-          </nav>
-          <Link
-            href="/join"
-            className="button-primary rounded-full px-5 py-2 text-sm font-semibold"
-          >
-            Apply
-          </Link>
-        </header>
 
         <main className="mx-auto w-full max-w-6xl px-6 pb-24 pt-6">
           <section className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
@@ -153,7 +130,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="absolute left-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--forest)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
-                  <span className="absolute bottom-[14cqw] left-[12cqw] text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-white/70">
+                  <span className="absolute bottom-[16cqw] left-[14cqw] text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-white/70">
                     Care
                   </span>
                 </div>
@@ -164,8 +141,8 @@ export default function Home() {
                     agency
                   </span>
                 </div>
-                <div className="font-display absolute left-1/2 top-[64cqw] z-10 flex h-[48cqw] w-[48cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-[clamp(1.15rem,5.8cqw,1.95rem)] font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)]">
-                  <span>
+                <div className="font-display absolute left-1/2 top-[64cqw] z-10 flex h-[46cqw] w-[46cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-[clamp(1.15rem,5.8cqw,1.95rem)] font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)]">
+                  <span className="leading-[1.2]">
                     AI-fluent
                     <br />
                     Changemaker
