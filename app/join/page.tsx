@@ -12,7 +12,7 @@ type FormState = {
   proceedWithoutRewards: string;
 };
 
-const demographicOptions = ["BIPOC", "Low income", "N/A"];
+const demographicOptions = ["Low income (>50% of tuition covered)", "First-gen college student","BIPOC","Immigrant or 1st/2nd gen", "Disability or access needs",  "Prefer not to say"];
 
 export default function JoinPage() {
   const [formState, setFormState] = useState<FormState>({
@@ -120,7 +120,7 @@ export default function JoinPage() {
         <div className="pointer-events-none absolute -left-20 top-24 h-[300px] w-[300px] rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.35),rgba(243,199,126,0))] blur-3xl" />
 
         <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pb-6 pt-8">
-          <Link href="/" className="text-lg font-semibold tracking-tight">
+          <Link href="/" className="text-2xl font-semibold tracking-tight">
             ImpactCorps
           </Link>
           <Link
@@ -135,7 +135,7 @@ export default function JoinPage() {
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <div className="space-y-6">
               <p
-                className="animate-rise text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]"
+                className="animate-rise text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]"
                 style={{ animationDelay: "40ms" }}
               >
                 Join ImpactCorps
@@ -221,7 +221,7 @@ export default function JoinPage() {
 
                 <div>
                   <p className="text-sm font-semibold">
-                    Self-identified demographics *
+                    Self-identified background *
                   </p>
                   <div className="mt-3 flex flex-wrap gap-3">
                     {demographicOptions.map((option) => {
@@ -313,3 +313,4 @@ export default function JoinPage() {
     </div>
   );
 }
+

@@ -21,9 +21,9 @@ export default function Home() {
 
   const programFeatures = [
     {
-      title: "Student-sourced social problems",
+      title: "Member-sourced social problems",
       description:
-        "Participants define problems rooted in lived experience and local insight.",
+        "Members define problems rooted in lived experience and local insight.",
     },
     {
       title: "Learning by building",
@@ -40,18 +40,37 @@ export default function Home() {
   const theoryOfChange = [
     {
       label: "Output",
-      description:
-        "Open-sourced solutions tackling community challenges and creating direct impact.",
+      description: (
+        <>
+          <strong className="font-semibold text-[color:var(--forest)]">
+            Immediate community impact
+          </strong>{" "}
+          with open-sourced solutions tackling community challenges and creating
+          direct impact.
+        </>
+      ),
     },
     {
       label: "Outcome",
-      description:
-        "AI-fluent changemakers with care, human agency, and AI fluency.",
+      description: (
+        <>
+          <strong className="font-semibold text-[color:var(--forest)]">
+            AI-fluent changemakers
+          </strong>{" "}
+          with care, human agency, and AI fluency.
+        </>
+      ),
     },
     {
       label: "Impact",
-      description:
-        "Accelerated, impact-biased careers shaped by care and AI-enabled capacity.",
+      description: (
+        <>
+          <strong className="font-semibold text-[color:var(--forest)]">
+            Accelerated, impact-biased careers
+          </strong>{" "}
+          shaped by care and AI-enabled capacity.
+        </>
+      ),
     },
   ];
 
@@ -61,7 +80,7 @@ export default function Home() {
         <div className="pointer-events-none absolute -top-48 left-1/2 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.45),rgba(243,199,126,0))] blur-3xl" />
         <div className="pointer-events-none absolute -left-24 top-24 h-[360px] w-[360px] rounded-full bg-[radial-gradient(closest-side,rgba(31,90,70,0.25),rgba(31,90,70,0))] blur-2xl" />
         <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pb-6 pt-8">
-          <Link href="/" className="text-lg font-semibold tracking-tight">
+          <Link href="/" className="text-2xl font-semibold tracking-tight">
             ImpactCorps
           </Link>
           <nav className="hidden items-center gap-6 text-sm font-medium text-[color:var(--ink)]/70 md:flex">
@@ -82,7 +101,7 @@ export default function Home() {
             href="/join"
             className="button-primary rounded-full px-5 py-2 text-sm font-semibold"
           >
-            Join Us
+            Apply
           </Link>
         </header>
 
@@ -90,25 +109,21 @@ export default function Home() {
           <section className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="space-y-8">
               <p
-                className="animate-rise text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]"
+                className="animate-rise text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]"
                 style={{ animationDelay: "40ms" }}
               >
                 AI for community impact
               </p>
               <h1
-                className="font-display animate-rise text-4xl leading-tight text-[color:var(--ink)] md:text-5xl lg:text-6xl"
+                className="font-display animate-rise text-3xl leading-tight text-[color:var(--ink)] md:text-4xl lg:text-5xl"
                 style={{ animationDelay: "120ms" }}
               >
-                Empowering under-resourced students to become AI-fluent
-                changemakers.
+                Empowering under-resourced communities to become{" "}
+                <span className="text-[color:var(--moss)]">
+                  AI-fluent changemakers
+                </span>{" "}
+                & shape more purposeful futures.
               </h1>
-              <p
-                className="animate-rise text-lg text-[color:var(--ink)]/75 md:text-xl"
-                style={{ animationDelay: "200ms" }}
-              >
-                ImpactCorps equips students with the care, agency, and AI fluency
-                to build solutions for the challenges they see every day.
-              </p>
               <div
                 className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center"
                 style={{ animationDelay: "280ms" }}
@@ -128,72 +143,71 @@ export default function Home() {
               </div>
             </div>
             <div
-              className="surface-card animate-floaty animate-rise rounded-3xl p-8"
+              className="animate-floaty animate-rise rounded-3xl p-6 lg:p-8"
               style={{ animationDelay: "160ms" }}
             >
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]">
-                Program focus
-              </p>
-              <h2 className="font-display mt-4 text-2xl text-[color:var(--ink)]">
-                A launchpad for impact-driven careers.
-              </h2>
-              <p className="mt-4 text-sm text-[color:var(--ink)]/70">
-                Participants build AI-powered solutions rooted in community
-                needs while earning recognition and support for the impact they
-                create.
-              </p>
-              <div className="mt-6 grid gap-4">
-                {["Care", "Human agency", "AI fluency"].map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center justify-between rounded-2xl border border-[color:var(--stone)]/70 bg-white/70 px-4 py-3"
-                  >
-                    <span className="text-sm font-semibold text-[color:var(--ink)]">
-                      {item}
-                    </span>
-                    <span className="text-xs uppercase tracking-[0.2em] text-[color:var(--moss)]">
-                      Core
-                    </span>
-                  </div>
-                ))}
+              <div className="relative mt-4 flex h-[340px] items-center justify-center md:h-[390px] lg:h-[430px]">
+                <div className="absolute left-1/2 top-4 h-[210px] w-[210px] -translate-x-1/2 rounded-full bg-[color:var(--clay)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply md:top-6 md:h-[250px] md:w-[250px] lg:top-8 lg:h-[290px] lg:w-[290px]">
+                  <span className="absolute left-1/2 top-[72px] -translate-x-1/2 text-xl font-medium text-[color:var(--ink)]/60 md:text-2xl">
+                    AI fluency
+                  </span>
+                </div>
+                <div className="absolute -left-2 top-[150px] h-[210px] w-[210px] rounded-full bg-[color:var(--forest)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply md:-left-4 md:top-[175px] md:h-[250px] md:w-[250px] lg:-left-6 lg:top-[195px] lg:h-[290px] lg:w-[290px]">
+                  <span className="absolute bottom-[72px] left-16 text-xl font-medium text-white/70 md:text-2xl">
+                    Care
+                  </span>
+                </div>
+                <div className="absolute -right-2 top-[150px] h-[210px] w-[210px] rounded-full bg-[color:var(--moss)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply md:-right-4 md:top-[175px] md:h-[250px] md:w-[250px] lg:-right-6 lg:top-[195px] lg:h-[290px] lg:w-[290px]">
+                  <span className="absolute bottom-[72px] right-14 text-right text-xl font-medium text-white/70 md:text-2xl">
+                    Human
+                    <br />
+                    agency
+                  </span>
+                </div>
+                <div className="font-display absolute left-1/2 top-[215px] z-10 flex h-[145px] w-[145px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-xl font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)] md:top-[240px] md:h-[170px] md:w-[170px] md:text-2xl lg:top-[265px] lg:h-[190px] lg:w-[190px]">
+                  <span>
+                    AI-fluent
+                    <br />
+                    Changemaker
+                  </span>
+                </div>
               </div>
             </div>
           </section>
         </main>
       </div>
 
+      <div className="mx-auto w-full max-w-6xl px-6">
+        <div className="h-px w-full bg-[color:var(--stone)]/80" />
+      </div>
+
       <section
         id="mission"
         className="mx-auto w-full max-w-6xl px-6 pb-16 pt-4"
       >
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]">
-              Mission
+        <div className="flex flex-col gap-10">
+          <div className="space-y-4 text-left">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+              our mission
             </p>
-            <h2 className="font-display text-3xl text-[color:var(--ink)]">
-              Empower under-resourced students to shape more impactful futures.
+            <h2 className="font-display text-4xl leading-tight text-[color:var(--ink)] md:text-5xl">
+              To empower under-resourced communities to build more impactful
+              careers & futures as AI-fluent changemakers.
             </h2>
-            <p className="text-base text-[color:var(--ink)]/75">
-              Our mission is to empower under-resourced students to become
-              AI-fluent changemakers and steer their careers toward impact.
-            </p>
           </div>
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]">
-              Vision
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+              Our vision
             </p>
-            <h2 className="font-display text-3xl text-[color:var(--ink)]">
-              Human capacity to care, amplified by AI.
+            <h2 className="font-display text-4xl leading-tight text-[color:var(--ink)] md:text-5xl">
+              The world where human capacity to do good is:
             </h2>
-            <ul className="space-y-3 text-base text-[color:var(--ink)]/75">
+            <ul className="space-y-4 font-display text-2xl leading-snug text-[color:var(--ink)]/80 md:text-3xl">
               <li>
-                A world where care is enhanced, not eroded, by increased use of
-                AI.
+                a) Enhanced not eroded by the increased use of AI
               </li>
               <li>
-                Opportunity to do good is accessible even to those with the
-                least resources.
+                b) Accessible even to those with least resources
               </li>
             </ul>
           </div>
@@ -202,41 +216,43 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16">
         <div className="surface-card rounded-3xl p-10">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-8">
             <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]">
-                The problem
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+                The Challenge
               </p>
-              <h2 className="font-display text-3xl text-[color:var(--ink)]">
-                Barriers keep talented students from pursuing impact.
+              <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
+                Barriers keep under-resourced talent from pursuing impact.
               </h2>
-              <p className="text-base text-[color:var(--ink)]/75">
-                Under-resourced students face structural challenges that make
-                impact-driven paths feel risky or unreachable.
-              </p>
             </div>
-            <ul className="space-y-4 text-base text-[color:var(--ink)]/75">
-              <li>
-                <span className="font-semibold text-[color:var(--ink)]">
-                  Career opportunity cost:
-                </span>{" "}
-                time spent on impact feels like time lost from stable,
-                high-paying careers.
-              </li>
-              <li>
-                <span className="font-semibold text-[color:var(--ink)]">
-                  Financial constraints:
-                </span>{" "}
-                near-term income needs and long-term salary concerns.
-              </li>
-              <li>
-                <span className="font-semibold text-[color:var(--ink)]">
-                  Awareness gap:
-                </span>{" "}
-                limited networks and visibility into high-impact career
-                pathways.
-              </li>
-            </ul>
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/80 p-6">
+                <h3 className="font-display text-2xl text-[color:var(--ink)] md:text-3xl">
+                  Career opportunity cost
+                </h3>
+                <p className="mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
+                  Time spent on impact can feel like time lost from stable,
+                  high-paying careers.
+                </p>
+              </div>
+              <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/80 p-6">
+                <h3 className="font-display text-2xl text-[color:var(--ink)] md:text-3xl">
+                  Financial constraints
+                </h3>
+                <p className="mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
+                  Near-term income needs and long-term salary concerns.
+                </p>
+              </div>
+              <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/80 p-6">
+                <h3 className="font-display text-2xl text-[color:var(--ink)] md:text-3xl">
+                  Awareness gap
+                </h3>
+                <p className="mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
+                  Limited networks and visibility into high-impact career
+                  pathways.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -245,16 +261,16 @@ export default function Home() {
         id="approach"
         className="mx-auto w-full max-w-6xl px-6 pb-16"
       >
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="space-y-10">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]">
-              Approach & solution
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+              Our approach
             </p>
-            <h2 className="font-display text-3xl text-[color:var(--ink)]">
-              We train and reward students to build impact with AI.
+            <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
+              We equip members to overcome the barriers by training and members to build impact with AI.
             </h2>
-            <p className="text-base text-[color:var(--ink)]/75">
-              ImpactCorps develops three core competencies so students can take
+            <p className="text-lg text-[color:var(--ink)]/75 md:text-xl">
+              ImpactCorps develops three core competencies so members can take
               ownership of their futures while serving their communities. We
               train and reward them to make social impact by using AI to tackle
               challenges close to home.
@@ -266,10 +282,10 @@ export default function Home() {
                 key={competency.title}
                 className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/70 p-6"
               >
-                <h3 className="font-display text-xl text-[color:var(--ink)]">
+                <h3 className="font-display text-2xl text-[color:var(--ink)] md:text-3xl">
                   {competency.title}
                 </h3>
-                <p className="mt-3 text-sm text-[color:var(--ink)]/70">
+                <p className="mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
                   {competency.description}
                 </p>
               </div>
@@ -285,8 +301,8 @@ export default function Home() {
         <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-[color:var(--mist)] px-8 py-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]">
-                Program features
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+                Our program
               </p>
               <h2 className="font-display text-3xl text-[color:var(--ink)]">
                 Learning by building what communities need.
@@ -317,36 +333,37 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="mx-auto w-full max-w-6xl px-6 pb-8">
+        <div className="h-px w-full bg-[color:var(--stone)]/80" />
+      </div>
+
       <section
         id="theory"
         className="mx-auto w-full max-w-6xl px-6 pb-20"
       >
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="space-y-10">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
               Theory of change
             </p>
-            <h2 className="font-display text-3xl text-[color:var(--ink)]">
+            <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
               From community solutions to impact-oriented careers.
             </h2>
-            <p className="text-base text-[color:var(--ink)]/75">
+            <p className="text-lg text-[color:var(--ink)]/75 md:text-xl">
               We focus on outputs that build confidence, outcomes that develop
               changemakers, and long-term impact in career direction.
             </p>
           </div>
-          <div className="space-y-4">
-            {theoryOfChange.map((item, index) => (
+          <div className="grid gap-4 md:grid-cols-3">
+            {theoryOfChange.map((item) => (
               <div
                 key={item.label}
-                className="relative rounded-3xl border border-[color:var(--stone)]/70 bg-white/70 px-6 py-5"
+                className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/70 p-6"
               >
-                <span className="absolute -left-3 top-5 hidden h-10 w-10 items-center justify-center rounded-full bg-[color:var(--sun)] text-sm font-semibold text-[color:var(--ink)] lg:flex">
-                  {index + 1}
-                </span>
-                <h3 className="font-display text-xl text-[color:var(--ink)]">
+                <h3 className="font-display text-2xl text-[color:var(--ink)] md:text-3xl">
                   {item.label}
                 </h3>
-                <p className="mt-2 text-sm text-[color:var(--ink)]/70">
+                <p className="mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
                   {item.description}
                 </p>
               </div>
@@ -360,11 +377,11 @@ export default function Home() {
           <div className="pointer-events-none absolute -right-10 top-0 h-40 w-40 rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.6),rgba(243,199,126,0))] blur-2xl" />
           <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/60">
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/60">
                 Ready to build?
               </p>
               <h2 className="font-display text-3xl text-white">
-                Join a cohort of students creating real community impact with
+                Join a cohort of members creating real community impact with
                 AI.
               </h2>
             </div>
@@ -388,3 +405,4 @@ export default function Home() {
     </div>
   );
 }
+
