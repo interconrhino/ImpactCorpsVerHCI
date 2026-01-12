@@ -1,0 +1,315 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+
+type FormState = {
+  name: string;
+  email: string;
+  school: string;
+  demographics: string[];
+  socialProblem: string;
+  proceedWithoutRewards: string;
+};
+
+const demographicOptions = ["BIPOC", "Low income", "N/A"];
+
+export default function JoinPage() {
+  const [formState, setFormState] = useState<FormState>({
+    name: "",
+    email: "",
+    school: "",
+    demographics: [],
+    socialProblem: "",
+    proceedWithoutRewards: "",
+  });
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [message, setMessage] = useState<string | null>(null);
+
+  const handleChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = event.target;
+    setFormState((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const toggleDemographic = (value: string) => {
+    setFormState((prev) => {
+      const next = prev.demographics.includes(value)
+        ? prev.demographics.filter((item) => item !== value)
+        : [...prev.demographics, value];
+      return { ...prev, demographics: next };
+    });
+  };
+
+  const validate = () => {
+    if (!formState.name.trim()) {
+      return "Please enter your name.";
+    }
+    if (!formState.email.trim()) {
+      return "Please enter your email.";
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
+      return "Please enter a valid email address.";
+    }
+    if (!formState.school.trim()) {
+      return "Please enter your school.";
+    }
+    if (formState.demographics.length === 0) {
+      return "Please select at least one demographic.";
+    }
+    if (!formState.proceedWithoutRewards) {
+      return "Please share your willingness to participate without rewards.";
+    }
+    return null;
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setMessage(null);
+    const validationMessage = validate();
+    if (validationMessage) {
+      setStatus("error");
+      setMessage(validationMessage);
+      return;
+    }
+
+    setStatus("submitting");
+    try {
+      const response = await fetch("/api/interest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(
+          payload?.error || "Something went wrong. Please try again."
+        );
+      }
+
+      setStatus("success");
+      setMessage("Thanks for your interest! We will reach out soon.");
+      setFormState({
+        name: "",
+        email: "",
+        school: "",
+        demographics: [],
+        socialProblem: "",
+        proceedWithoutRewards: "",
+      });
+    } catch (error) {
+      setStatus("error");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "We could not submit the form. Please try again."
+      );
+    }
+  };
+
+  return (
+    <div className="min-h-screen">
+      <div className="relative overflow-hidden">
+        <div className="pointer-events-none absolute -top-32 left-1/2 h-[480px] w-[700px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(31,90,70,0.25),rgba(31,90,70,0))] blur-3xl" />
+        <div className="pointer-events-none absolute -left-20 top-24 h-[300px] w-[300px] rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.35),rgba(243,199,126,0))] blur-3xl" />
+
+        <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pb-6 pt-8">
+          <Link href="/" className="text-lg font-semibold tracking-tight">
+            ImpactCorps
+          </Link>
+          <Link
+            href="/join"
+            className="button-primary rounded-full px-5 py-2 text-sm font-semibold"
+          >
+            Join Us
+          </Link>
+        </header>
+
+        <main className="mx-auto w-full max-w-6xl px-6 pb-20 pt-4">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="space-y-6">
+              <p
+                className="animate-rise text-sm font-semibold uppercase tracking-[0.3em] text-[color:var(--moss)]"
+                style={{ animationDelay: "40ms" }}
+              >
+                Join ImpactCorps
+              </p>
+              <h1
+                className="font-display animate-rise text-4xl text-[color:var(--ink)] md:text-5xl"
+                style={{ animationDelay: "120ms" }}
+              >
+                Bring your community insight. Build with AI. Create impact.
+              </h1>
+              <p
+                className="animate-rise text-base text-[color:var(--ink)]/75"
+                style={{ animationDelay: "200ms" }}
+              >
+                Share your interest and we will connect you with upcoming cohorts
+                and resources. We welcome students who want to lead with care.
+              </p>
+              <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/70 p-6">
+                <h2 className="font-display text-xl text-[color:var(--ink)]">
+                  What to expect
+                </h2>
+                <ul className="mt-4 space-y-3 text-sm text-[color:var(--ink)]/70">
+                  <li>Guided learning to build AI-powered solutions.</li>
+                  <li>Peer cohort for accountability and support.</li>
+                  <li>Recognition tied to measurable community impact.</li>
+                </ul>
+              </div>
+            </div>
+
+            <form
+              className="surface-card animate-rise rounded-3xl p-8"
+              style={{ animationDelay: "240ms" }}
+              onSubmit={handleSubmit}
+            >
+              <div className="space-y-6">
+                <div>
+                  <label className="text-sm font-semibold" htmlFor="name">
+                    Name *
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={formState.name}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold" htmlFor="email">
+                    Email *
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold" htmlFor="school">
+                    School *
+                  </label>
+                  <input
+                    id="school"
+                    name="school"
+                    type="text"
+                    value={formState.school}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    placeholder="School or program"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold">
+                    Self-identified demographics *
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-3">
+                    {demographicOptions.map((option) => {
+                      const selected = formState.demographics.includes(option);
+                      return (
+                        <label
+                          key={option}
+                          className={`flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm ${
+                            selected
+                              ? "border-[color:var(--moss)] bg-[color:var(--mist)]"
+                              : "border-[color:var(--stone)]/80 bg-white"
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={selected}
+                            onChange={() => toggleDemographic(option)}
+                            className="h-4 w-4 accent-[color:var(--moss)]"
+                          />
+                          {option}
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    className="text-sm font-semibold"
+                    htmlFor="proceedWithoutRewards"
+                  >
+                    Are you willing to participate in the program without
+                    financial rewards? *
+                  </label>
+                  <select
+                    id="proceedWithoutRewards"
+                    name="proceedWithoutRewards"
+                    value={formState.proceedWithoutRewards}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    required
+                  >
+                    <option value="">Select one</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold" htmlFor="socialProblem">
+                    Social problem in mind (optional)
+                  </label>
+                  <textarea
+                    id="socialProblem"
+                    name="socialProblem"
+                    value={formState.socialProblem}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    rows={4}
+                    placeholder="Share a challenge in your community you want to tackle."
+                  />
+                </div>
+
+                {message ? (
+                  <div
+                    className={`rounded-2xl px-4 py-3 text-sm ${
+                      status === "success"
+                        ? "bg-[color:var(--mist)] text-[color:var(--moss)]"
+                        : "bg-[#fce6e6] text-[#9b1c1c]"
+                    }`}
+                    role="status"
+                  >
+                    {message}
+                  </div>
+                ) : null}
+
+                <button
+                  type="submit"
+                  className="button-primary w-full rounded-full px-6 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-60"
+                  disabled={status === "submitting"}
+                >
+                  {status === "submitting" ? "Submitting..." : "Submit interest"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
