@@ -146,25 +146,25 @@ export default function Home() {
               className="animate-floaty animate-rise rounded-3xl p-6 lg:p-8"
               style={{ animationDelay: "160ms" }}
             >
-              <div className="relative mt-4 flex h-[340px] items-center justify-center md:h-[390px] lg:h-[430px]">
-                <div className="absolute left-1/2 top-4 h-[210px] w-[210px] -translate-x-1/2 rounded-full bg-[color:var(--clay)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply md:top-6 md:h-[250px] md:w-[250px] lg:top-8 lg:h-[290px] lg:w-[290px]">
-                  <span className="absolute left-1/2 top-[72px] -translate-x-1/2 text-xl font-medium text-[color:var(--ink)]/60 md:text-2xl">
+              <div className="relative mx-auto mt-4 flex aspect-square w-full max-w-[440px] items-center justify-center [container-type:inline-size]">
+                <div className="absolute left-1/2 top-[3cqw] h-[68cqw] w-[68cqw] -translate-x-1/2 rounded-full bg-[color:var(--clay)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
+                  <span className="absolute left-1/2 top-[14cqw] -translate-x-1/2 text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-[color:var(--ink)]/60">
                     AI fluency
                   </span>
                 </div>
-                <div className="absolute -left-2 top-[150px] h-[210px] w-[210px] rounded-full bg-[color:var(--forest)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply md:-left-4 md:top-[175px] md:h-[250px] md:w-[250px] lg:-left-6 lg:top-[195px] lg:h-[290px] lg:w-[290px]">
-                  <span className="absolute bottom-[72px] left-16 text-xl font-medium text-white/70 md:text-2xl">
+                <div className="absolute left-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--forest)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
+                  <span className="absolute bottom-[14cqw] left-[12cqw] text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-white/70">
                     Care
                   </span>
                 </div>
-                <div className="absolute -right-2 top-[150px] h-[210px] w-[210px] rounded-full bg-[color:var(--moss)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply md:-right-4 md:top-[175px] md:h-[250px] md:w-[250px] lg:-right-6 lg:top-[195px] lg:h-[290px] lg:w-[290px]">
-                  <span className="absolute bottom-[72px] right-14 text-right text-xl font-medium text-white/70 md:text-2xl">
+                <div className="absolute right-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--moss)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
+                  <span className="absolute bottom-[14cqw] right-[12cqw] text-right text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium leading-tight text-white/70">
                     Human
                     <br />
                     agency
                   </span>
                 </div>
-                <div className="font-display absolute left-1/2 top-[215px] z-10 flex h-[145px] w-[145px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-xl font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)] md:top-[240px] md:h-[170px] md:w-[170px] md:text-2xl lg:top-[265px] lg:h-[190px] lg:w-[190px]">
+                <div className="font-display absolute left-1/2 top-[64cqw] z-10 flex h-[48cqw] w-[48cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-[clamp(1.15rem,5.8cqw,1.95rem)] font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)]">
                   <span>
                     AI-fluent
                     <br />
@@ -405,4 +405,3 @@ export default function Home() {
     </div>
   );
 }
-
