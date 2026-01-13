@@ -12,7 +12,14 @@ type FormState = {
   proceedWithoutRewards: string;
 };
 
-const demographicOptions = ["Low income (>50% of tuition covered)", "First-gen college student","BIPOC","Immigrant or 1st/2nd gen", "Disability or access needs",  "Prefer not to say"];
+const demographicOptions = [
+  { label: "Low income (>50% of tuition covered)", value: "Low income" },
+  { label: "First-gen college student", value: "1st gen college" },
+  { label: "BIPOC", value: "BIPOC" },
+  { label: "Immigrant or 1st/2nd gen", value: "Immigrant" },
+  { label: "Disability or access needs", value: "Disabled" },
+  { label: "Prefer not to say", value: "N/A" },
+];
 
 export default function JoinPage() {
   const [formState, setFormState] = useState<FormState>({
@@ -225,10 +232,12 @@ export default function JoinPage() {
                   </p>
                   <div className="mt-3 flex flex-wrap gap-3">
                     {demographicOptions.map((option) => {
-                      const selected = formState.demographics.includes(option);
+                      const selected = formState.demographics.includes(
+                        option.value
+                      );
                       return (
                         <label
-                          key={option}
+                          key={option.value}
                           className={`flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm ${
                             selected
                               ? "border-[color:var(--moss)] bg-[color:var(--mist)]"
@@ -238,10 +247,10 @@ export default function JoinPage() {
                           <input
                             type="checkbox"
                             checked={selected}
-                            onChange={() => toggleDemographic(option)}
+                            onChange={() => toggleDemographic(option.value)}
                             className="h-4 w-4 accent-[color:var(--moss)]"
                           />
-                          {option}
+                          {option.label}
                         </label>
                       );
                     })}
@@ -313,4 +322,3 @@ export default function JoinPage() {
     </div>
   );
 }
-
