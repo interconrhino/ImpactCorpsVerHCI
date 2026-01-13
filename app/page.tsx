@@ -244,7 +244,7 @@ export default function Home() {
               Our approach
             </p>
             <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
-              We equip members to overcome the barriers by training and members to build impact with AI.
+              We equip members to overcome the barriers by training members to build impact with AI.
             </h2>
             <p className="text-lg text-[color:var(--ink)]/75 md:text-xl">
               ImpactCorps develops three core competencies so members can take
