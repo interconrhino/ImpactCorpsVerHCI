@@ -199,7 +199,7 @@ export default function Home() {
                 The Challenge
               </p>
               <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
-                Barriers keep under-resourced talent from pursuing impact.
+                Barriers keep under-resourced talent from pursuing high-impact careers.
               </h2>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
@@ -208,7 +208,7 @@ export default function Home() {
                   Career opportunity cost
                 </h3>
                 <p className="mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
-                  Time spent on impact can feel like time lost from stable,
+                  Time spent on impact can feel like time lost from building stable,
                   high-paying careers.
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function Home() {
                   Financial constraints
                 </h3>
                 <p className="mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
-                  Near-term income needs and long-term salary concerns.
+                  Near-term income needs and long-term salary concerns keep the path unaffordable.
                 </p>
               </div>
               <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/80 p-6">
