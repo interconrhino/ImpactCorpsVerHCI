@@ -124,9 +124,9 @@ export default function Home() {
               style={{ animationDelay: "160ms" }}
             >
               <div className="relative mx-auto mt-4 flex aspect-square w-full max-w-[440px] items-center justify-center [container-type:inline-size]">
-                <div className="absolute left-1/2 top-[3cqw] h-[68cqw] w-[68cqw] -translate-x-1/2 rounded-full bg-[color:var(--clay)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
-                  <span className="absolute left-1/2 top-[14cqw] -translate-x-1/2 text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-[color:var(--ink)]/60">
-                    AI fluency
+                <div className="absolute left-1/2 top-[3cqw] flex h-[68cqw] w-[68cqw] -translate-x-1/2 items-start justify-center pt-[18cqw] rounded-full bg-[color:var(--clay)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
+                  <span className="text-center text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium leading-[0.95] text-[color:var(--ink)]/60">
+                    AI Fluency
                   </span>
                 </div>
                 <div className="absolute left-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--forest)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
@@ -138,7 +138,7 @@ export default function Home() {
                   <span className="absolute bottom-[14cqw] right-[12cqw] text-right text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium leading-tight text-white/70">
                     Human
                     <br />
-                    agency
+                    Agency
                   </span>
                 </div>
                 <div className="font-display absolute left-1/2 top-[64cqw] z-10 flex h-[46cqw] w-[46cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-[clamp(1.15rem,5.8cqw,1.95rem)] font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)]">
