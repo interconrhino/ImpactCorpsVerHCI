@@ -14,12 +14,12 @@ export default function OurProgramPage() {
         "Use AI to research, prototype, and deliver solutions with real-world constraints.",
     },
     {
-      title: "Mentorship + cohort",
+      title: "Guided learning",
       description:
         "Weekly check-ins, feedback loops, and peer support to keep you moving.",
     },
     {
-      title: "Impact-based pay",
+      title: "Impact-based reward",
       description:
         "Rewards tied to adoption and measurable outcomes, not just effort.",
     },
@@ -39,33 +39,45 @@ export default function OurProgramPage() {
     },
     {
       step: "02",
-      title: "Onboarding + goal setting",
+      title: "Community problem identification",
       description:
-        "Meet your cohort, pick a focus area, and set measurable impact goals.",
+        "Develop a long-list of social problems rooted in lived experience by talking to those around you.",
     },
     {
       step: "03",
-      title: "Choose a community problem",
+      title: "Choose a problem & beneficiary",
       description:
-        "Select a challenge rooted in lived experience and validate with users.",
+        "Select a challenge and the one person you want to build the solution for.",
     },
     {
       step: "04",
-      title: "Build with AI (guided sprints)",
+      title: "Build using AI (guided sprints)",
       description:
-        "Ship fast with weekly prompts, templates, and mentor feedback.",
+        "Learn to use AI to build the solution through our guided program.",
     },
     {
       step: "05",
-      title: "Launch + measure impact",
+      title: "Launch MVP + iterate",
       description:
-        "Deliver the solution, track adoption, and report outcomes.",
+        "Quickly launch the MVP and iterate with the target beneficiary.",
     },
     {
       step: "06",
-      title: "Earn rewards + showcase",
+      title: "Measure + showcase impact",
       description:
-        "Get paid for impact and publish your work with clear metrics.",
+        "Track and quantify your impact of your solution on the community.",
+    },
+    {
+      step: "07",
+      title: "Earn impact-based rewards",
+      description:
+        "Get paid for social impact (measured in terms of # of beneficiaires & value of impact)",
+    },
+    {
+      step: "08",
+      title: "Onwards and upwards!",
+      description:
+        "Begin another projects or continue scaling the project as an AI-fluent changemaker!",
     },
   ];
 
@@ -92,7 +104,7 @@ export default function OurProgramPage() {
                 className="font-display animate-rise text-3xl leading-tight text-[color:var(--ink)] md:text-4xl lg:text-5xl"
                 style={{ animationDelay: "120ms" }}
               >
-                Build CV. Make an Impact with AI. Get paid.
+                Make an impact. <br/>Build resume. <br/>Get paid.
               </h1>
               <p
                 className="animate-rise text-lg text-[color:var(--ink)]/75 md:text-xl"
@@ -171,14 +183,14 @@ export default function OurProgramPage() {
               Key program features
             </p>
             <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
-              What you get as a student.
+              What you get as a member.
             </h2>
             <p className="text-lg text-[color:var(--ink)]/75 md:text-xl">
               Everything is designed to help you ship real work, measure impact,
               and build a career story that stands out.
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4">
             {programFeatures.map((feature) => (
               <div
                 key={feature.title}
@@ -210,23 +222,26 @@ export default function OurProgramPage() {
                 What to expect from week one to launch.
               </h2>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {journeySteps.map((step) => (
-                <div
-                  key={step.step}
-                  className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/80 p-6"
-                >
-                  <p className="text-sm font-bold text-[color:var(--moss)]">
-                    {step.step}
-                  </p>
-                  <h3 className="mt-3 font-display text-2xl text-[color:var(--ink)]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-base text-[color:var(--ink)]/70">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
+            <div className="relative">
+              <div className="absolute left-4 top-6 h-full w-px -translate-y-3 bg-[color:var(--stone)]/80" />
+              <div className="space-y-4">
+                {journeySteps.map((step) => (
+                  <div key={step.step} className="relative pl-10">
+                    <span className="absolute left-[10px] top-8 h-3 w-3 rounded-full bg-[color:var(--moss)] shadow-[0_0_0_6px_rgba(31,90,70,0.12)]" />
+                    <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/80 p-6">
+                      <p className="text-sm font-bold text-[color:var(--moss)]">
+                        {step.step}
+                      </p>
+                      <h3 className="mt-3 font-display text-2xl text-[color:var(--ink)]">
+                        {step.title}
+                      </h3>
+                      <p className="mt-3 text-base text-[color:var(--ink)]/70">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
