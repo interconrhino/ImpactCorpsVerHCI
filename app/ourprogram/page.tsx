@@ -6,27 +6,17 @@ export default function OurProgramPage() {
     {
       title: "Community-rooted projects",
       description:
-        "Work on problems defined by lived experience and validated by local partners.",
+        "Work on problems found by you based on lived experience in your own community.",
     },
     {
-      title: "AI tool fluency",
+      title: "Learning by building",
       description:
-        "Use AI to research, prototype, and deliver solutions with real-world constraints.",
-    },
-    {
-      title: "Guided learning",
-      description:
-        "Weekly check-ins, feedback loops, and peer support to keep you moving.",
+        "Develop problem-solving skills and AI fluency by shipping real solutions.",
     },
     {
       title: "Impact-based reward",
       description:
-        "Rewards tied to adoption and measurable outcomes, not just effort.",
-    },
-    {
-      title: "Career-ready portfolio",
-      description:
-        "Leave with published work, metrics, and stories you can put on your CV.",
+        "Earn rewards tied to adoption and measurable outcomes.",
     },
   ];
 
@@ -110,7 +100,7 @@ export default function OurProgramPage() {
                 className="animate-rise text-lg text-[color:var(--ink)]/75 md:text-xl"
                 style={{ animationDelay: "200ms" }}
               >
-                A student-first cohort where you ship real solutions, earn
+                A cohort where you ship real solutions, earn
                 rewards for measurable outcomes, and leave with a portfolio that
                 proves your impact.
               </p>
@@ -137,30 +127,28 @@ export default function OurProgramPage() {
               style={{ animationDelay: "160ms" }}
             >
               <div className="relative mx-auto mt-4 flex aspect-square w-full max-w-[440px] items-center justify-center [container-type:inline-size]">
-                <div className="absolute left-1/2 top-[3cqw] h-[68cqw] w-[68cqw] -translate-x-1/2 rounded-full bg-[color:var(--clay)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
-                  <span className="absolute left-1/2 top-[14cqw] -translate-x-1/2 text-[clamp(1.1rem,5.2cqw,1.8rem)] font-medium text-[color:var(--ink)]/60">
-                    AI build
+                <div className="absolute left-1/2 top-[3cqw] flex h-[68cqw] w-[68cqw] -translate-x-1/2 items-start justify-center pt-[18cqw] rounded-full bg-[color:var(--clay)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
+                  <span className="text-center text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium leading-[0.95] text-[color:var(--ink)]/60">
+                    AI Fluency
                   </span>
                 </div>
                 <div className="absolute left-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--forest)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
-                  <span className="absolute bottom-[16cqw] left-[14cqw] text-[clamp(1.1rem,5.2cqw,1.8rem)] font-medium text-white/70">
-                    Paid
-                    <br />
-                    impact
+                  <span className="absolute bottom-[16cqw] left-[14cqw] text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-white/70">
+                    Care
                   </span>
                 </div>
                 <div className="absolute right-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--moss)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
-                  <span className="absolute bottom-[14cqw] right-[12cqw] text-right text-[clamp(1.1rem,5.2cqw,1.8rem)] font-medium leading-tight text-white/70">
-                    Portfolio
+                  <span className="absolute bottom-[14cqw] right-[12cqw] text-right text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium leading-tight text-white/70">
+                    Human
                     <br />
-                    work
+                    Agency
                   </span>
                 </div>
-                <div className="font-display absolute left-1/2 top-[64cqw] z-10 flex h-[46cqw] w-[46cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-[clamp(1.05rem,5.3cqw,1.8rem)] font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)]">
-                  <span className="leading-[1.03]">
-                    Cohort
+                <div className="font-display absolute left-1/2 top-[64cqw] z-10 flex h-[46cqw] w-[46cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-[clamp(1.15rem,5.8cqw,1.95rem)] font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)]">
+                  <span className="leading-[1.2]">
+                    AI-fluent
                     <br />
-                    builds
+                    Changemaker
                   </span>
                 </div>
               </div>
@@ -183,7 +171,7 @@ export default function OurProgramPage() {
               Key program features
             </p>
             <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
-              What you get as a member.
+              Program centred on your growth as AI-fluent changemakers.
             </h2>
             <p className="text-lg text-[color:var(--ink)]/75 md:text-xl">
               Everything is designed to help you ship real work, measure impact,
