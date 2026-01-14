@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
+import SiteFooter from "./components/site-footer";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -31,6 +32,7 @@ export default function RootLayout({
         className={`${fraunces.variable} ${manrope.variable} antialiased`}
       >
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

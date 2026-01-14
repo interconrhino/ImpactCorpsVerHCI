@@ -6,7 +6,7 @@ export default function OurProgramPage() {
     {
       title: "Community-rooted projects",
       description:
-        "Work on problems found by you based on lived experience in your own community.",
+        "Learn to spot and tackle real problems affecting your community for your projects.",
     },
     {
       title: "Learning by building",
@@ -29,9 +29,9 @@ export default function OurProgramPage() {
     },
     {
       step: "02",
-      title: "Community problem identification",
+      title: "Spot community challenges",
       description:
-        "Develop a long-list of social problems rooted in lived experience by talking to those around you.",
+        "We help you develop eyes to spot social problems that affect those around you (e.g., your parents).",
     },
     {
       step: "03",
@@ -100,9 +100,12 @@ export default function OurProgramPage() {
                 className="animate-rise text-lg text-[color:var(--ink)]/75 md:text-xl"
                 style={{ animationDelay: "200ms" }}
               >
-                A cohort where you ship real solutions, earn
-                rewards for measurable outcomes, and leave with a portfolio that
-                proves your impact.
+                A cohort of future{" "}
+                <span className="font-semibold text-[color:var(--moss)]">
+                  AI-fluent changemakers
+                </span>{" "}
+                where you ship real solutions, earn rewards for measurable
+                outcomes, and leave with a portfolio that proves your impact.
               </p>
               <div
                 className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center"
@@ -178,7 +181,7 @@ export default function OurProgramPage() {
               and build a career story that stands out.
             </p>
           </div>
-          <div className="grid gap-4">
+          <div className="grid gap-4 md:grid-cols-3">
             {programFeatures.map((feature) => (
               <div
                 key={feature.title}
@@ -264,6 +267,7 @@ export default function OurProgramPage() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

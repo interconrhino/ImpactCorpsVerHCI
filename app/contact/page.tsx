@@ -1,35 +1,25 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import SiteHeader from "../components/site-header";
 
 type FormState = {
   name: string;
   email: string;
-  school: string;
-  demographics: string[];
-  socialProblem: string;
-  proceedWithoutRewards: string;
+  organisation: string;
+  phone: string;
+  subject: string;
+  content: string;
 };
 
-const demographicOptions = [
-  { label: "Low income (>50% of tuition covered)", value: "Low income" },
-  { label: "First-gen college student", value: "1st gen college" },
-  { label: "BIPOC", value: "BIPOC" },
-  { label: "Immigrant or 1st/2nd gen", value: "Immigrant" },
-  { label: "Disability or access needs", value: "Disabled" },
-  { label: "Prefer not to say", value: "N/A" },
-];
-
-export default function JoinPage() {
+export default function ContactPage() {
   const [formState, setFormState] = useState<FormState>({
     name: "",
     email: "",
-    school: "",
-    demographics: [],
-    socialProblem: "",
-    proceedWithoutRewards: "",
+    organisation: "",
+    phone: "",
+    subject: "",
+    content: "",
   });
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
@@ -45,15 +35,6 @@ export default function JoinPage() {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const toggleDemographic = (value: string) => {
-    setFormState((prev) => {
-      const next = prev.demographics.includes(value)
-        ? prev.demographics.filter((item) => item !== value)
-        : [...prev.demographics, value];
-      return { ...prev, demographics: next };
-    });
-  };
-
   const validate = () => {
     if (!formState.name.trim()) {
       return "Please enter your name.";
@@ -64,14 +45,11 @@ export default function JoinPage() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
       return "Please enter a valid email address.";
     }
-    if (!formState.school.trim()) {
-      return "Please enter your school.";
+    if (!formState.subject.trim()) {
+      return "Please enter a subject.";
     }
-    if (formState.demographics.length === 0) {
-      return "Please select at least one demographic.";
-    }
-    if (!formState.proceedWithoutRewards) {
-      return "Please share your willingness to participate without rewards.";
+    if (!formState.content.trim()) {
+      return "Please enter your message.";
     }
     return null;
   };
@@ -88,7 +66,7 @@ export default function JoinPage() {
 
     setStatus("submitting");
     try {
-      const response = await fetch("/api/interest", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
@@ -102,14 +80,14 @@ export default function JoinPage() {
       }
 
       setStatus("success");
-      setMessage("Thanks for your interest! We will reach out soon.");
+      setMessage("Thanks for reaching out! We'll be in touch soon.");
       setFormState({
         name: "",
         email: "",
-        school: "",
-        demographics: [],
-        socialProblem: "",
-        proceedWithoutRewards: "",
+        organisation: "",
+        phone: "",
+        subject: "",
+        content: "",
       });
     } catch (error) {
       setStatus("error");
@@ -125,38 +103,38 @@ export default function JoinPage() {
     <div className="min-h-screen">
       <SiteHeader />
       <div className="relative overflow-hidden -mt-24 pt-24">
-        <div className="pointer-events-none absolute -top-32 left-1/2 h-[480px] w-[700px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(31,90,70,0.25),rgba(31,90,70,0))] blur-3xl" />
-        <div className="pointer-events-none absolute -left-20 top-24 h-[300px] w-[300px] rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.35),rgba(243,199,126,0))] blur-3xl" />
+        <div className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[700px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.35),rgba(243,199,126,0))] blur-3xl" />
+        <div className="pointer-events-none absolute -left-20 top-24 h-[320px] w-[320px] rounded-full bg-[radial-gradient(closest-side,rgba(31,90,70,0.2),rgba(31,90,70,0))] blur-3xl" />
 
-        <main className="mx-auto w-full max-w-6xl px-6 pb-20 pt-4">
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <main className="mx-auto w-full max-w-6xl px-6 pb-20 pt-6">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="space-y-6">
               <p
                 className="animate-rise text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]"
                 style={{ animationDelay: "40ms" }}
               >
-                Join ImpactCorps
+                Contact us
               </p>
               <h1
                 className="font-display animate-rise text-4xl text-[color:var(--ink)] md:text-5xl"
                 style={{ animationDelay: "120ms" }}
               >
-                Bring your community insight. Build with AI. Create impact.
+                Let&apos;s build impact together.
               </h1>
               <p
                 className="animate-rise text-base text-[color:var(--ink)]/75"
                 style={{ animationDelay: "200ms" }}
               >
-                Share your interest and we will connect you with upcoming cohorts
-                and resources. We welcome students who want to lead with care.
+                Share your questions, partnership ideas, or program inquiries.
+                We&apos;ll respond as soon as possible.
               </p>
               <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/70 p-6">
                 <h2 className="font-display text-xl text-[color:var(--ink)]">
-                  What to expect
+                  What we can help with
                 </h2>
                 <ul className="mt-4 space-y-3 text-sm text-[color:var(--ink)]/70">
-                  <li>Guided learning to build AI-powered solutions.</li>
-                  <li>Recognition tied to measurable community impact.</li>
+                  <li>Student program questions and timelines.</li>
+                  <li>Community partnerships and collaborations.</li>
                 </ul>
               </div>
             </div>
@@ -184,6 +162,24 @@ export default function JoinPage() {
                 </div>
 
                 <div>
+                  <label
+                    className="text-sm font-semibold"
+                    htmlFor="organisation"
+                  >
+                    Organisation
+                  </label>
+                  <input
+                    id="organisation"
+                    name="organisation"
+                    type="text"
+                    value={formState.organisation}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    placeholder="Your organisation"
+                  />
+                </div>
+
+                <div>
                   <label className="text-sm font-semibold" htmlFor="email">
                     Email *
                   </label>
@@ -200,86 +196,49 @@ export default function JoinPage() {
                 </div>
 
                 <div>
-                  <label className="text-sm font-semibold" htmlFor="school">
-                    School *
+                  <label className="text-sm font-semibold" htmlFor="phone">
+                    Phone number
                   </label>
                   <input
-                    id="school"
-                    name="school"
-                    type="text"
-                    value={formState.school}
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formState.phone}
                     onChange={handleChange}
                     className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
-                    placeholder="School or program"
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold" htmlFor="subject">
+                    Subject *
+                  </label>
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    value={formState.subject}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    placeholder="How can we help?"
                     required
                   />
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold">
-                    Self-identified background *
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-3">
-                    {demographicOptions.map((option) => {
-                      const selected = formState.demographics.includes(
-                        option.value
-                      );
-                      return (
-                        <label
-                          key={option.value}
-                          className={`flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm ${
-                            selected
-                              ? "border-[color:var(--moss)] bg-[color:var(--mist)]"
-                              : "border-[color:var(--stone)]/80 bg-white"
-                          }`}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={selected}
-                            onChange={() => toggleDemographic(option.value)}
-                            className="h-4 w-4 accent-[color:var(--moss)]"
-                          />
-                          {option.label}
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    className="text-sm font-semibold"
-                    htmlFor="proceedWithoutRewards"
-                  >
-                    Are you willing to participate in the program without
-                    financial rewards? *
-                  </label>
-                  <select
-                    id="proceedWithoutRewards"
-                    name="proceedWithoutRewards"
-                    value={formState.proceedWithoutRewards}
-                    onChange={handleChange}
-                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
-                    required
-                  >
-                    <option value="">Select one</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-sm font-semibold" htmlFor="socialProblem">
-                    Social problem in mind (optional)
+                  <label className="text-sm font-semibold" htmlFor="content">
+                    Message *
                   </label>
                   <textarea
-                    id="socialProblem"
-                    name="socialProblem"
-                    value={formState.socialProblem}
+                    id="content"
+                    name="content"
+                    value={formState.content}
                     onChange={handleChange}
                     className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
-                    rows={4}
-                    placeholder="Share a challenge in your community you want to tackle."
+                    rows={5}
+                    placeholder="Share your message."
+                    required
                   />
                 </div>
 
@@ -301,7 +260,7 @@ export default function JoinPage() {
                   className="button-primary w-full rounded-full px-6 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-60"
                   disabled={status === "submitting"}
                 >
-                  {status === "submitting" ? "Submitting..." : "Submit interest"}
+                  {status === "submitting" ? "Sending..." : "Send message"}
                 </button>
               </div>
             </form>

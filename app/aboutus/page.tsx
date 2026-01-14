@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SiteHeader from "./components/site-header";
+import SiteHeader from "../components/site-header";
 
 export default function Home() {
   const competencies = [
@@ -32,6 +32,54 @@ export default function Home() {
     },
   ];
 
+  const theoryOfChange = [
+    {
+      label: "Output",
+      description: (
+        <>
+          <strong className="font-semibold text-[color:var(--forest)]">
+            Immediate community impact
+          </strong>{" "}
+          with open-sourced solutions tackling community challenges and creating
+          direct impact.
+        </>
+      ),
+    },
+    {
+      label: "Outcome",
+      description: (
+        <>
+          <strong className="font-semibold text-[color:var(--forest)]">
+            AI-fluent changemakers
+          </strong>{" "}
+          with care, human agency, and AI fluency.
+        </>
+      ),
+    },
+    {
+      label: "Impact",
+      description: (
+        <>
+          <strong className="font-semibold text-[color:var(--forest)]">
+            Accelerated, impact-biased careers
+          </strong>{" "}
+          shaped by care and AI-enabled capacity.
+        </>
+      ),
+    },
+    {
+      label: "Social Impact",
+      description: (
+        <>
+          <strong className="font-bold text-[color:white]">
+            Strengthened collective capacity for impact,
+          </strong>{" "}
+          rooted in human agency and
+          lived experience.
+        </>
+      ),
+    },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -120,14 +168,16 @@ export default function Home() {
         id="mission"
         className="mx-auto w-full max-w-6xl px-6 pb-16 pt-4"
       >
-        <div className="space-y-4 text-left">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
-            our mission
-          </p>
-          <h2 className="font-display text-4xl leading-tight text-[color:var(--ink)] md:text-5xl">
-            To empower under-resourced communities to build more impactful
-            careers & futures as AI-fluent changemakers.
-          </h2>
+        <div className="flex flex-col gap-10">
+          <div className="space-y-4 text-left">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+              our mission
+            </p>
+            <h2 className="font-display text-4xl leading-tight text-[color:var(--ink)] md:text-5xl">
+              To empower under-resourced communities to build more impactful
+              careers & futures as AI-fluent changemakers.
+            </h2>
+          </div>
         </div>
       </section>
 
@@ -263,6 +313,81 @@ export default function Home() {
         <div className="h-px w-full bg-[color:var(--stone)]/80" />
       </div>
 
+      <section
+        id="theory"
+        className="mx-auto w-full max-w-6xl px-6 pb-20"
+      >
+        <div className="space-y-10">
+          <div className="space-y-4">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+              Theory of change
+            </p>
+            <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
+              From community solutions to impact-oriented careers.
+            </h2>
+            <p className="text-lg text-[color:var(--ink)]/75 md:text-xl">
+              We focus on outputs that build confidence, outcomes that develop
+              changemakers, and long-term impact in career direction.
+            </p>
+          </div>
+          <div className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {theoryOfChange.map((item) => {
+              const tone =
+                item.label === "Outcome"
+                  ? "bg-[color:var(--mist)] text-[color:var(--forest)]"
+                  : item.label === "Impact"
+                  ? "bg-[color:var(--moss)]/15 text-[color:var(--forest)]"
+                  : item.label === "Social Impact"
+                  ? "bg-[color:var(--forest)] text-white"
+                  : "bg-white/70 text-[color:var(--ink)]";
+              const textTone =
+                item.label === "Social Impact"
+                  ? "text-white"
+                  : "text-[color:var(--ink)]";
+              const bodyTone =
+                item.label === "Social Impact"
+                  ? "text-white/80"
+                  : "text-[color:var(--ink)]/70";
+
+              return (
+              <div
+                key={item.label}
+                className={`w-full rounded-3xl border border-[color:var(--stone)]/70 p-6 ${tone}`}
+              >
+                <h3 className={`font-display text-2xl md:text-3xl ${textTone}`}>
+                  {item.label}
+                </h3>
+                <p className={`mt-3 text-base md:text-lg ${bodyTone}`}>
+                  {item.description}
+                </p>
+              </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 pb-20">
+        <div className="space-y-4">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+            Our vision
+          </p>
+          <h2 className="font-display text-4xl leading-tight text-[color:var(--ink)] md:text-5xl">
+            The world where human capacity to do good is:
+          </h2>
+          <ul className="space-y-4 font-display text-2xl leading-snug text-[color:var(--ink)]/80 md:text-3xl">
+            <li>
+              a) Accessible to everyone even to those with the least resources
+            </li>
+            <li>
+              b) Rooted in direct lived experience, not financial capacity
+            </li>
+            <li>
+              c) Enhanced not eroded by the increased use of AI
+            </li>
+          </ul>
+        </div>
+      </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-24">
         <div className="relative overflow-hidden rounded-3xl bg-[color:var(--forest)] px-10 py-12 text-white">

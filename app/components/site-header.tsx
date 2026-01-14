@@ -10,8 +10,10 @@ type NavItem = {
 };
 
 const defaultNavItems: NavItem[] = [
-  { href: "/", label: "About Us" },
+  { href: "/", label: "Home" },
+  { href: "/aboutus", label: "About Us" },
   { href: "/ourprogram", label: "Our Program" },
+  { href: "/contact", label: "Contact" },
   { href: "/join", label: "Apply", variant: "button" },
 ];
 
