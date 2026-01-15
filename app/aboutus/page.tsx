@@ -20,7 +20,7 @@ export default function Home() {
     },
   ];
 
-  const programFeatures = [
+  const programFeatures: { title: string; description?: string }[] = [
     {
       title: "Tackle real community challenges",
     },
@@ -300,9 +300,11 @@ export default function Home() {
                 <h3 className="font-display text-xl text-[color:var(--ink)]">
                   {feature.title}
                 </h3>
-                <p className="mt-3 text-sm text-[color:var(--ink)]/70">
-                  {feature.description}
-                </p>
+                {feature.description ? (
+                  <p className="mt-3 text-sm text-[color:var(--ink)]/70">
+                    {feature.description}
+                  </p>
+                ) : null}
               </div>
             ))}
           </div>
