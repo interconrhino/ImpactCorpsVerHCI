@@ -2,21 +2,30 @@ import Link from "next/link";
 import SiteHeader from "./components/site-header";
 
 export default function Home() {
-  const competencies = [
+  type CompetencyKey = "care" | "agency" | "fluency";
+
+  const competencies: {
+    title: string;
+    description: string;
+    graphic: CompetencyKey;
+  }[] = [
     {
       title: "Care",
       description:
         'Center their "why" around care for the people and places around them.',
+      graphic: "care",
     },
     {
       title: "Human agency",
       description:
         "Build the confidence to self-determine and act on challenges they want to tackle.",
+      graphic: "agency",
     },
     {
       title: "AI fluency",
       description:
         "Use available AI tools resourcefully to move from idea to impact.",
+      graphic: "fluency",
     },
   ];
 
@@ -32,6 +41,39 @@ export default function Home() {
     },
   ];
 
+  const renderCompetencyGraphic = (active: CompetencyKey) => {
+    const highlightStyles: Record<CompetencyKey, string> = {
+      care: "bg-[color:var(--forest)]/80 shadow-[0_12px_24px_rgba(16,25,21,0.18)]",
+      agency: "bg-[color:var(--moss)]/80 shadow-[0_12px_24px_rgba(16,25,21,0.18)]",
+      fluency: "bg-[color:var(--clay)]/85 shadow-[0_12px_24px_rgba(16,25,21,0.18)]",
+    };
+    const mutedStyle = "bg-[color:var(--stone)]/65";
+    const circleClass = (key: CompetencyKey) =>
+      active === key ? highlightStyles[key] : mutedStyle;
+
+    return (
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-5 top-5 h-12 w-15"
+      >
+        <span
+          className={`absolute left-1/2 top-[1px] h-7 w-7 -translate-x-1/2 rounded-full ${circleClass(
+            "fluency"
+          )}`}
+        />
+        <span
+          className={`absolute bottom-0 left-[6px] h-7 w-7 rounded-full ${circleClass(
+            "care"
+          )}`}
+        />
+        <span
+          className={`absolute bottom-0 right-[6px] h-7 w-7 rounded-full ${circleClass(
+            "agency"
+          )}`}
+        />
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen">
@@ -203,8 +245,9 @@ export default function Home() {
             {competencies.map((competency) => (
               <div
                 key={competency.title}
-                className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/70 p-6"
+                className="relative rounded-3xl border border-[color:var(--stone)]/70 bg-white/70 p-6 pr-20"
               >
+                {renderCompetencyGraphic(competency.graphic)}
                 <h3 className="font-display text-2xl text-[color:var(--ink)] md:text-3xl">
                   {competency.title}
                 </h3>
