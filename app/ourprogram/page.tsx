@@ -251,18 +251,18 @@ export default function OurProgramPage() {
               </h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+              <a
+                href="#faq"
+                className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white"
+              >
+                FAQs
+              </a>
               <Link
                 href="/join"
                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[color:var(--forest)]"
               >
                 Apply now
               </Link>
-              <a
-                href="#features"
-                className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white"
-              >
-                Review features
-              </a>
             </div>
           </div>
         </div>
@@ -271,7 +271,7 @@ export default function OurProgramPage() {
       <section className="mx-auto w-full max-w-6xl px-6 pb-24">
         <div className="surface-card rounded-3xl p-10">
           <div className="space-y-8">
-            <div className="space-y-4">
+            <div id="faq" className="space-y-4 scroll-mt-24">
               <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
                 FAQ
               </p>

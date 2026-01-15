@@ -47,18 +47,24 @@ export default function Home() {
                 className="animate-rise text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]"
                 style={{ animationDelay: "40ms" }}
               >
-                AI for community impact
+                Introducing ImpactCorps
               </p>
               <h1
                 className="font-display animate-rise text-3xl leading-tight text-[color:var(--ink)] md:text-4xl lg:text-5xl"
                 style={{ animationDelay: "120ms" }}
               >
-                Equipping under-resourced communities to become {" "}
+                More {" "}
                 <span className="text-[color:var(--moss)]">
-                  AI-fluent changemakers
-                </span>{" "}
-                & shape more purposeful futures.
+                  AI-fluent changemakers.
+                </span>{" "}<br/>
+                More impactful futures for all.
               </h1>
+                            <p
+                className="animate-rise text-lg text-[color:var(--ink)]/75 md:text-xl"
+                style={{ animationDelay: "200ms" }}
+              >
+                We empower under-resourced communities to build more impactful careers and futures.
+              </p>
               <div
                 className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center"
                 style={{ animationDelay: "280ms" }}
@@ -67,13 +73,13 @@ export default function Home() {
                   href="/join"
                   className="button-primary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
                 >
-                  Join the next cohort
+                  Join our program
                 </Link>
                 <a
-                  href="#mission"
+                  href="/aboutus"
                   className="button-secondary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
                 >
-                  Learn more
+                  More about us
                 </a>
               </div>
             </div>
@@ -215,26 +221,27 @@ export default function Home() {
         id="program"
         className="mx-auto w-full max-w-6xl px-6 pb-16"
       >
-        <div className="rounded-3xl border border-[color:var(--stone)]/70 bg-[#e9f1f7] px-8 py-10">
+        <div className="relative overflow-hidden rounded-3xl border border-[color:var(--stone)]/70 bg-[color:var(--forest)] px-8 py-10 text-white">
+          <div className="pointer-events-none absolute -right-10 top-0 h-40 w-40 rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.6),rgba(243,199,126,0))] blur-2xl" />
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="space-y-3">
-              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/60">
                 Our program
               </p>
-              <h2 className="font-display text-3xl text-[color:var(--ink)]">
+              <h2 className="font-display text-3xl text-white">
                 Learning by building what communities need.
               </h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/ourprogram"
-                className="button-secondary inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
+                className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white"
               >
                 Learn more
               </Link>
               <Link
                 href="/join"
-                className="button-primary inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
+                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[color:var(--forest)]"
               >
                 Apply
               </Link>
@@ -244,9 +251,9 @@ export default function Home() {
             {programFeatures.map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-3xl border border-[color:var(--stone)]/60 bg-white/90 px-6 py-6 shadow-[0_18px_45px_rgba(16,25,21,0.1)] transition-transform duration-300 hover:-translate-y-1"
+                className="rounded-3xl border border-white/15 bg-white/90 px-6 py-6 text-[color:var(--ink)] shadow-[0_18px_45px_rgba(16,25,21,0.16)] transition-transform duration-300 hover:-translate-y-1"
               >
-                <div className="h-1 w-10 rounded-full bg-[color:var(--moss)]/70 mb-4" />
+                <div className="mb-4 h-1 w-10 rounded-full bg-[color:var(--forest)]/60" />
                 <h3 className="font-display text-xl text-[color:var(--ink)]">
                   {feature.title}
                 </h3>
@@ -264,32 +271,6 @@ export default function Home() {
       <div className="mx-auto w-full max-w-6xl px-6 pb-8">
         <div className="h-px w-full bg-[color:var(--stone)]/80" />
       </div>
-
-
-      <section className="mx-auto w-full max-w-6xl px-6 pb-24">
-        <div className="relative overflow-hidden rounded-3xl bg-[color:var(--forest)] px-10 py-12 text-white">
-          <div className="pointer-events-none absolute -right-10 top-0 h-40 w-40 rounded-full bg-[radial-gradient(closest-side,rgba(243,199,126,0.6),rgba(243,199,126,0))] blur-2xl" />
-          <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="space-y-4">
-              <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/60">
-                Ready to build?
-              </p>
-              <h2 className="font-display text-3xl text-white">
-                Join a cohort of members creating real community impact with
-                AI.
-              </h2>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-              <Link
-                href="/join"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[color:var(--forest)]"
-              >
-                Apply
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
     </div>
   );

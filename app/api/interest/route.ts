@@ -5,6 +5,7 @@ type InterestPayload = {
   email?: string;
   school?: string;
   demographics?: string[];
+  yearLevel?: string;
   socialProblem?: string;
   proceedWithoutRewards?: string;
 };
@@ -36,12 +37,14 @@ export async function POST(request: Request) {
   const demographics = Array.isArray(payload.demographics)
     ? payload.demographics
     : [];
+  const yearLevel = payload.yearLevel?.trim() || "";
   const proceedWithoutRewards = payload.proceedWithoutRewards?.trim() || "";
 
   if (
     !name ||
     !email ||
     !school ||
+    !yearLevel ||
     demographics.length === 0 ||
     !proceedWithoutRewards
   ) {
@@ -63,6 +66,10 @@ export async function POST(request: Request) {
     SubmittedAt: new Date().toISOString(),
     Source: "ImpactCorps Site",
   };
+
+  if (yearLevel) {
+    fields.YearLevel = yearLevel;
+  }
 
   if (payload.socialProblem?.trim()) {
     fields.SocialProblem = payload.socialProblem.trim();

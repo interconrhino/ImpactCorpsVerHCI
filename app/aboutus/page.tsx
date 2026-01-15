@@ -95,33 +95,39 @@ export default function Home() {
                 className="animate-rise text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]"
                 style={{ animationDelay: "40ms" }}
               >
-                AI for community impact
+                Our belief
               </p>
               <h1
                 className="font-display animate-rise text-3xl leading-tight text-[color:var(--ink)] md:text-4xl lg:text-5xl"
                 style={{ animationDelay: "120ms" }}
               >
-                Equipping under-resourced communities to become {" "}
+                More {" "}
                 <span className="text-[color:var(--moss)]">
-                  AI-fluent changemakers
-                </span>{" "}
-                & shape more purposeful futures.
+                  AI-fluent changemakers.
+                </span>{" "}<br/>
+                More impactful futures for all.
               </h1>
+              <p
+                className="animate-rise text-lg text-[color:var(--ink)]/75 md:text-xl"
+                style={{ animationDelay: "200ms" }}
+              >
+                AI’s real potential is not in solving social problems itself, but in enabling billions of changemakers to do so.
+              </p>
               <div
                 className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center"
                 style={{ animationDelay: "280ms" }}
               >
                 <Link
-                  href="/join"
-                  className="button-primary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
-                >
-                  Join the next cohort
-                </Link>
-                <a
                   href="#mission"
                   className="button-secondary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
                 >
-                  Learn more
+                  Our Mission
+                </Link>
+                <a
+                  href="/ourprogram"
+                  className="button-primary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
+                >
+                  Our Program
                 </a>
               </div>
             </div>
@@ -397,19 +403,18 @@ export default function Home() {
           <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-4">
               <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/60">
-                Ready to build?
+                Ready to be the change?
               </p>
               <h2 className="font-display text-3xl text-white">
-                Join a cohort of members creating real community impact with
-                AI.
+                Partner with us in building more purposeful futures for all.
               </h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
               <Link
-                href="/join"
+                href="/contact"
                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[color:var(--forest)]"
               >
-                Apply
+                Contact Us
               </Link>
             </div>
           </div>

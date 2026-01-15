@@ -9,6 +9,7 @@ type FormState = {
   email: string;
   school: string;
   demographics: string[];
+  yearLevel: string;
   socialProblem: string;
   proceedWithoutRewards: string;
 };
@@ -19,7 +20,8 @@ const demographicOptions = [
   { label: "BIPOC", value: "BIPOC" },
   { label: "Immigrant or 1st/2nd gen", value: "Immigrant" },
   { label: "Disability or access needs", value: "Disabled" },
-  { label: "Prefer not to say", value: "N/A" },
+  { label: "N/A", value: "N/A" },
+  { label: "Prefer not to share", value: "Notpreferred" },
 ];
 
 export default function JoinPage() {
@@ -28,6 +30,7 @@ export default function JoinPage() {
     email: "",
     school: "",
     demographics: [],
+    yearLevel: "",
     socialProblem: "",
     proceedWithoutRewards: "",
   });
@@ -66,6 +69,9 @@ export default function JoinPage() {
     }
     if (!formState.school.trim()) {
       return "Please enter your school.";
+    }
+    if (!formState.yearLevel) {
+      return "Please select your year level.";
     }
     if (formState.demographics.length === 0) {
       return "Please select at least one demographic.";
@@ -108,6 +114,7 @@ export default function JoinPage() {
         email: "",
         school: "",
         demographics: [],
+        yearLevel: "",
         socialProblem: "",
         proceedWithoutRewards: "",
       });
@@ -201,7 +208,7 @@ export default function JoinPage() {
 
                 <div>
                   <label className="text-sm font-semibold" htmlFor="school">
-                    School *
+                    School/organisation *
                   </label>
                   <input
                     id="school"
@@ -213,6 +220,28 @@ export default function JoinPage() {
                     placeholder="School or program"
                     required
                   />
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold" htmlFor="yearLevel">
+                    Year level *
+                  </label>
+                  <select
+                    id="yearLevel"
+                    name="yearLevel"
+                    value={formState.yearLevel}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    required
+                  >
+                    <option value="">Select one</option>
+                    <option value="Freshman">Freshman</option>
+                    <option value="Sophomore">Sophomore</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Senior">Senior</option>
+                    <option value="Graduate">Graduate</option>
+                    <option value="N/A">N/A</option>
+                  </select>
                 </div>
 
                 <div>
