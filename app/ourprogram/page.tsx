@@ -268,6 +268,94 @@ export default function OurProgramPage() {
         </div>
       </section>
 
+      <section className="mx-auto w-full max-w-6xl px-6 pb-24">
+        <div className="surface-card rounded-3xl p-10">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+                FAQ
+              </p>
+              <h2 className="font-display text-3xl text-[color:var(--ink)] md:text-4xl">
+                Questions about the program.
+              </h2>
+            </div>
+            <div className="space-y-4">
+              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
+                  I never used AI before. Can I still join?
+                </summary>
+                <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  Yes. You do not need any prior experience with AI to join. Students at all levels of AI familiarity are welcome. The core goal of the programme is to help you develop AI fluency and apply it meaningfully to real social challenges. We will support you step by step throughout the program.
+                </p>
+              </details>
+              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
+                  Who can apply to this program?
+                </summary>
+                <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  Though the program is designed primarily for first-year college students from under-resourced backgrounds (specifically first-generation and low-income communities), the program itself is open to anyone who is motivated to create social impact.
+                </p>
+              </details>
+              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
+                  How will this program help my career?
+                </summary>
+                <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  As an AI-fluent changemaker, you will develop future-proof skills such as proactive problem solving and applied AI fluency. These capabilities will enable you to create disproportionate value in any field, whether nonprofit leadership, entrepreneurship, consulting, finance, or technology.
+                </p>
+                <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  Beyond technical skills, the program's social-impact focus equips you with the mindset and tools to pursue a more purposeful career. No matter which path you choose, you will learn how to translate your work into meaningful impact within your own communities.
+                </p>
+              </details>
+              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
+                  What is the time commitment?
+                </summary>
+                <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  The commitment is to complete the programme. There is no fixed pace. Students progress at their own speed, with an emphasis on learning depth and real-world social impact rather than speed or output volume.
+                </p>
+              </details>
+              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
+                  How do the impact-based rewards work?
+                </summary>
+                <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  Participants may earn impact-based rewards of up to $1,000, depending on the scale of their impact they create through the solution (validated by ImpactCorps coach). Rewards are tied to two components:
+                </p>
+                <ol className="mt-2 list-decimal pl-5 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  <li>
+                    User impact: $100 for launching a solution for the initial target community, plus $100 for each additional beneficiary who regularly uses the solution, up to $500.
+                  </li>
+                  <li>
+                    Measured social value: calculated as 10% of the assessed dollar value of realised social impact, up to $500.
+                  </li>
+                </ol>
+                <p className="mt-2 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  The $1,000 cap applies to under-resourced students. Other participants may still earn impact-based rewards, though the cap may be lower.
+                </p>
+              </details>
+              
+              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
+                  How would it boost my resume?
+                </summary>
+                <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  The program is structured to help you clearly articulate both the problem you addressed and the impact you created. You will be supported in translating your work into strong resume language, for example: Designed and launched an AI-enabled solution addressing [social problem], serving [X] beneficiaries and generating measurable social impact (equivalent to [$X]).
+                </p>
+              </details>
+              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
+                  Where would the program take place?
+                </summary>
+                <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
+                  The program is fully remote.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

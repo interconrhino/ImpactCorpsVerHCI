@@ -53,11 +53,11 @@ export default function Home() {
                 className="font-display animate-rise text-3xl leading-tight text-[color:var(--ink)] md:text-4xl lg:text-5xl"
                 style={{ animationDelay: "120ms" }}
               >
-                Under-resourced students into {" "}
+                Equipping under-resourced communities to become {" "}
                 <span className="text-[color:var(--moss)]">
                   AI-fluent changemakers
                 </span>{" "}
-                shaping impactful futures.
+                & shape more purposeful futures.
               </h1>
               <div
                 className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center"
