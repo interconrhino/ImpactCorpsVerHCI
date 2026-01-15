@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type NavItem = {
@@ -22,8 +23,17 @@ export default function SiteHeader({
 }: {
   navItems?: NavItem[];
 }) {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname.startsWith(href);
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -66,7 +76,11 @@ export default function SiteHeader({
                 className={
                   item.variant === "button"
                     ? "button-primary rounded-full px-5 py-2 text-sm font-semibold"
-                    : "hover:text-[color:var(--ink)]"
+                    : `border-b-2 pb-1 transition ${
+                        isActive(item.href)
+                          ? "border-[color:var(--forest)] text-[color:var(--ink)]"
+                          : "border-transparent hover:border-[color:var(--ink)]/40 hover:text-[color:var(--ink)]"
+                      }`
                 }
               >
                 {item.label}
@@ -114,7 +128,11 @@ export default function SiteHeader({
                   className={
                     item.variant === "button"
                       ? "button-primary inline-flex w-full items-center justify-center rounded-full px-5 py-2 text-sm font-semibold"
-                      : "rounded-full px-4 py-2 text-sm font-semibold text-[color:var(--ink)]/80 hover:text-[color:var(--ink)]"
+                      : `rounded-full px-4 py-2 text-sm font-semibold transition ${
+                          isActive(item.href)
+                            ? "text-[color:var(--ink)] underline decoration-[color:var(--forest)] decoration-2 underline-offset-4"
+                            : "text-[color:var(--ink)]/80 hover:text-[color:var(--ink)]"
+                        }`
                   }
                 >
                   {item.label}

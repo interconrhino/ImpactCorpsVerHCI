@@ -14,7 +14,7 @@ export default function OurProgramPage() {
         "Develop problem-solving skills and AI fluency by shipping real solutions.",
     },
     {
-      title: "Impact-based reward",
+      title: "Impact-based financial reward",
       description:
         "Earn rewards tied to adoption and measurable outcomes.",
     },
@@ -168,15 +168,15 @@ export default function OurProgramPage() {
         id="features"
         className="mx-auto w-full max-w-6xl px-6 pb-16 pt-4"
       >
-        <div className="space-y-10">
+        <div className="space-y-10 rounded-3xl bg-[color:var(--forest)] px-8 py-12 text-white shadow-[0_30px_70px_rgba(15,45,35,0.25)] md:px-10">
           <div className="space-y-4">
-            <p className="text-sm font-bold uppercase tracking-[0.3em] text-[color:var(--moss)]">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/60">
               Key program features
             </p>
-            <h2 className="font-display text-4xl text-[color:var(--ink)] md:text-5xl">
-              Program centred on your growth as AI-fluent changemakers.
+            <h2 className="font-display text-4xl text-white md:text-5xl">
+              Stand out with real impact on the society.
             </h2>
-            <p className="text-lg text-[color:var(--ink)]/75 md:text-xl">
+            <p className="text-lg text-white/75 md:text-xl">
               Everything is designed to help you ship real work, measure impact,
               and build a career story that stands out.
             </p>
@@ -185,7 +185,7 @@ export default function OurProgramPage() {
             {programFeatures.map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-3xl border border-[color:var(--stone)]/70 bg-white/70 p-6"
+                className="rounded-3xl border border-white/15 bg-white/95 p-6 text-[color:var(--ink)] shadow-[0_18px_40px_rgba(10,20,16,0.18)]"
               >
                 <h3 className="font-display text-2xl text-[color:var(--ink)] md:text-3xl">
                   {feature.title}
