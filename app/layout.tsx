@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "ImpactCorps",
   description:
     "ImpactCorps empowers under-resourced students to become AI-fluent changemakers and build solutions for their communities.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
