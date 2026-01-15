@@ -99,14 +99,12 @@ export default function Home() {
                 <span className="text-[color:var(--moss)]">
                   AI-fluent changemakers.
                 </span>{" "}<br/>
-                More impactful futures for all.
+                More impactful futures for all. <br/>
+                It starts with {" "}
+                <span className="text-[color:var(--moss)]">
+                  ImpactCorps.
+                </span>{" "}
               </h1>
-                            <p
-                className="animate-rise text-lg text-[color:var(--ink)]/75 md:text-xl"
-                style={{ animationDelay: "200ms" }}
-              >
-                We empower under-resourced communities to build more impactful careers and futures.
-              </p>
               <div
                 className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center"
                 style={{ animationDelay: "280ms" }}
