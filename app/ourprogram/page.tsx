@@ -61,7 +61,7 @@ export default function OurProgramPage() {
       step: "07",
       title: "Earn impact-based rewards",
       description:
-        "Get paid for social impact (measured in terms of # of beneficiaires & value of impact)",
+        "Get paid for social impact (measured in terms of # of beneficiaries & value of impact)",
     },
     {
       step: "08",
