@@ -1,6 +1,22 @@
 import Link from "next/link";
 import SiteHeader from "../components/site-header";
 
+function FaqSummary({ children }: { children: string }) {
+  return (
+    <summary className="flex cursor-pointer list-none items-center gap-3 text-base font-semibold text-[color:var(--ink)] [&::-webkit-details-marker]:hidden">
+      <svg
+        viewBox="0 0 20 20"
+        className="h-4 w-4 shrink-0 text-[color:var(--ink)]/70 transition-transform duration-200 group-open:rotate-90"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M7.5 4v12L13.5 10 7.5 4Z" />
+      </svg>
+      <span>{children}</span>
+    </summary>
+  );
+}
+
 export default function OurProgramPage() {
   type FeatureIcon = "community" | "build" | "reward";
 
@@ -19,7 +35,7 @@ export default function OurProgramPage() {
       icon: "build",
       title: "Learning by building",
       description:
-        "Develop problem-solving and AI skills through real projects.",
+        "Develop problem-solving and AI skills throughb real projects.",
     },
     {
       icon: "reward",
@@ -342,26 +358,20 @@ export default function OurProgramPage() {
               </h2>
             </div>
             <div className="space-y-4">
-              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
-                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
-                  I never used AI before. Can I still join?
-                </summary>
+              <details className="group rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <FaqSummary>I never used AI before. Can I still join?</FaqSummary>
                 <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
                   Yes. You do not need any prior experience with AI to join. Students at all levels of AI familiarity are welcome. The core goal of the programme is to help you develop AI fluency and apply it meaningfully to real social challenges. We will support you step by step throughout the program.
                 </p>
               </details>
-              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
-                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
-                  Who can apply to this program?
-                </summary>
+              <details className="group rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <FaqSummary>Who can apply to this program?</FaqSummary>
                 <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
                   Though the program is designed primarily for first-year college students from under-resourced backgrounds (specifically first-generation and low-income communities), the program itself is open to anyone who is motivated to create social impact.
                 </p>
               </details>
-              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
-                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
-                  How will this program help my career?
-                </summary>
+              <details className="group rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <FaqSummary>How will this program help my career?</FaqSummary>
                 <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
                   As an AI-fluent changemaker, you will develop future-proof skills such as proactive problem solving and applied AI fluency. These capabilities will enable you to create disproportionate value in any field, whether nonprofit leadership, entrepreneurship, consulting, finance, or technology.
                 </p>
@@ -369,18 +379,14 @@ export default function OurProgramPage() {
                   Beyond technical skills, the program&apos;s social-impact focus equips you with the mindset and tools to pursue a more purposeful career. No matter which path you choose, you will learn how to translate your work into meaningful impact within your own communities.
                 </p>
               </details>
-              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
-                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
-                  What is the time commitment?
-                </summary>
+              <details className="group rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <FaqSummary>What is the time commitment?</FaqSummary>
                 <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
                   The commitment is to complete the programme. There is no fixed pace. Students progress at their own speed, with an emphasis on learning depth and real-world social impact rather than speed or output volume.
                 </p>
               </details>
-              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
-                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
-                  How do the impact-based rewards work?
-                </summary>
+              <details className="group rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <FaqSummary>How do the impact-based rewards work?</FaqSummary>
                 <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
                   Participants may earn impact-based rewards of up to $1,000, depending on the scale of their impact they create through the solution (validated by ImpactCorps coach). Rewards are tied to two components:
                 </p>
@@ -397,18 +403,14 @@ export default function OurProgramPage() {
                 </p>
               </details>
               
-              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
-                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
-                  How would it boost my resume?
-                </summary>
+              <details className="group rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <FaqSummary>How would it boost my resume?</FaqSummary>
                 <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
                   The program is structured to help you clearly articulate both the problem you addressed and the impact you created. You will be supported in translating your work into strong resume language, for example: Designed and launched an AI-enabled solution addressing [social problem], serving [X] beneficiaries and generating measurable social impact (equivalent to [$X]).
                 </p>
               </details>
-              <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
-                <summary className="cursor-pointer text-base font-semibold text-[color:var(--ink)]">
-                  Where would the program take place?
-                </summary>
+              <details className="group rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">
+                <FaqSummary>Where would the program take place?</FaqSummary>
                 <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
                   The program is fully remote.
                 </p>
