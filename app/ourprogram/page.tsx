@@ -186,7 +186,7 @@ export default function OurProgramPage() {
                 <span className="font-bold text-[color:var(--moss)]">
                   AI-fluent changemakers
                 </span>{" "}
-                who stand out not with capacity to make positive social impact.
+                who stand out with capacity to make positive social impact.
               </p>
               <div
                 className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center"
