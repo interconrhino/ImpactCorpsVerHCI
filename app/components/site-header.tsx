@@ -23,6 +23,8 @@ export default function SiteHeader({
 }: {
   navItems?: NavItem[];
 }) {
+  const SCROLL_ON = 24;
+  const SCROLL_OFF = 8;
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +39,8 @@ export default function SiteHeader({
 
   useEffect(() => {
     const onScroll = () => {
-      setIsScrolled(window.scrollY > 12);
+      const y = window.scrollY;
+      setIsScrolled((prev) => (prev ? y > SCROLL_OFF : y > SCROLL_ON));
     };
 
     onScroll();
@@ -50,17 +53,13 @@ export default function SiteHeader({
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
+      className={`sticky top-0 z-40 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
         isScrolled || isMenuOpen
           ? "bg-[color:var(--sand)]/95 shadow-[0_12px_24px_rgba(16,25,21,0.08)] backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
-      <div
-        className={`mx-auto flex w-full max-w-6xl items-center justify-between px-6 transition-all duration-300 ${
-          isScrolled ? "py-3" : "pb-6 pt-8"
-        }`}
-      >
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
           className="text-2xl font-semibold tracking-tight text-[color:var(--forest)]"

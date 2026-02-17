@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import SiteHeader from "../components/site-header";
 
@@ -10,6 +9,7 @@ type FormState = {
   school: string;
   demographics: string[];
   yearLevel: string;
+  major: string;
   socialProblem: string;
   proceedWithoutRewards: string;
 };
@@ -31,6 +31,7 @@ export default function JoinPage() {
     school: "",
     demographics: [],
     yearLevel: "",
+    major: "",
     socialProblem: "",
     proceedWithoutRewards: "",
   });
@@ -72,6 +73,9 @@ export default function JoinPage() {
     }
     if (!formState.yearLevel) {
       return "Please select your year level.";
+    }
+    if (!formState.major.trim()) {
+      return "Please enter your current major or intended field of study.";
     }
     if (formState.demographics.length === 0) {
       return "Please select at least one demographic.";
@@ -115,6 +119,7 @@ export default function JoinPage() {
         school: "",
         demographics: [],
         yearLevel: "",
+        major: "",
         socialProblem: "",
         proceedWithoutRewards: "",
       });
@@ -162,7 +167,7 @@ export default function JoinPage() {
                   What to expect
                 </h2>
                 <ul className="mt-4 space-y-3 text-sm text-[color:var(--ink)]/70">
-                  <li>Guided learning to build AI-powered solutions.</li>
+                  <li>Guided learning to build tech solutions using AI.</li>
                   <li>Recognition tied to measurable community impact.</li>
                 </ul>
               </div>
@@ -242,6 +247,22 @@ export default function JoinPage() {
                     <option value="Graduate">Graduate</option>
                     <option value="N/A">N/A</option>
                   </select>
+                </div>
+
+                <div>
+                  <label className="text-sm font-semibold" htmlFor="major">
+                    Current major or intended field of study *
+                  </label>
+                  <input
+                    id="major"
+                    name="major"
+                    type="text"
+                    value={formState.major}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    placeholder="e.g., Computer Science, Biology, Public Policy"
+                    required
+                  />
                 </div>
 
                 <div>

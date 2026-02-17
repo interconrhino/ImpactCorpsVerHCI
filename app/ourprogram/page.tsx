@@ -2,23 +2,87 @@ import Link from "next/link";
 import SiteHeader from "../components/site-header";
 
 export default function OurProgramPage() {
-  const programFeatures = [
+  type FeatureIcon = "community" | "build" | "reward";
+
+  const programFeatures: {
+    icon: FeatureIcon;
+    title: string;
+    description: string;
+  }[] = [
     {
+      icon: "community",
       title: "Community-rooted projects",
       description:
-        "Learn to spot and tackle real problems affecting your community for your projects.",
+        "Learn to spot and tackle real community challenges.",
     },
     {
+      icon: "build",
       title: "Learning by building",
       description:
-        "Develop problem-solving skills and AI fluency by shipping real solutions.",
+        "Develop problem-solving and AI skills through real projects.",
     },
     {
+      icon: "reward",
       title: "Impact-based financial reward",
       description:
-        "Earn rewards tied to adoption and measurable outcomes.",
+        "Earn rewards tied to the social impact you create.",
     },
   ];
+
+  const renderFeatureWatermark = (icon: FeatureIcon) => {
+    if (icon === "community") {
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          className="h-24 w-24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          aria-hidden="true"
+        >
+          <path d="M12 5.5a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" />
+          <path d="M4.8 9.1a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Z" />
+          <path d="M19.2 9.1a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Z" />
+          <path d="M7.1 18c.2-2.2 2.5-3.8 4.9-3.8s4.7 1.6 4.9 3.8" />
+          <path d="M2.5 18c.2-1.6 1.5-2.8 3.2-3.1" />
+          <path d="M21.5 18c-.2-1.6-1.5-2.8-3.2-3.1" />
+        </svg>
+      );
+    }
+
+    if (icon === "build") {
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          className="h-24 w-24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          aria-hidden="true"
+        >
+          <rect x="4.5" y="5" width="15" height="10" rx="2.2" />
+          <path d="M2.8 18.5h18.4" />
+          <path d="M12 13V8.2" />
+          <path d="m9.9 10.3 2.1-2.1 2.1 2.1" />
+        </svg>
+      );
+    }
+
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        className="h-24 w-24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="8.5" />
+        <path d="M12 7.2v9.6" />
+        <path d="M15 9.5c0-1.2-1.2-2-3-2s-3 .8-3 2 1.2 2 3 2 3 .8 3 2-1.2 2-3 2-3-.8-3-2" />
+      </svg>
+    );
+  };
 
   const journeySteps = [
     {
@@ -94,18 +158,19 @@ export default function OurProgramPage() {
                 className="font-display animate-rise text-3xl leading-tight text-[color:var(--ink)] md:text-4xl lg:text-5xl"
                 style={{ animationDelay: "120ms" }}
               >
-                Make an impact. <br/>Build resume. <br/>Get paid.
+                Make an impact. <br/>Build your career. <br/>Get paid.
               </h1>
               <p
                 className="animate-rise text-lg text-[color:var(--ink)]/75 md:text-xl"
                 style={{ animationDelay: "200ms" }}
               >
-                A cohort of future{" "}
-                <span className="font-semibold text-[color:var(--moss)]">
+                Join the <span className="font-bold">
+                  paid program developed at Harvard University
+                </span> to unlock your potential as {" "}
+                <span className="font-bold text-[color:var(--moss)]">
                   AI-fluent changemakers
                 </span>{" "}
-                where you ship real solutions, earn rewards for measurable
-                outcomes, and leave with a portfolio that proves your impact.
+                who stand out not with capacity to make positive social impact.
               </p>
               <div
                 className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center"
@@ -130,28 +195,26 @@ export default function OurProgramPage() {
               style={{ animationDelay: "160ms" }}
             >
               <div className="relative mx-auto mt-4 flex aspect-square w-full max-w-[440px] items-center justify-center [container-type:inline-size]">
-                <div className="absolute left-1/2 top-[3cqw] flex h-[68cqw] w-[68cqw] -translate-x-1/2 items-start justify-center pt-[18cqw] rounded-full bg-[color:var(--clay)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
-                  <span className="text-center text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium leading-[0.95] text-[color:var(--ink)]/60">
-                    AI Fluency
+                <div className="absolute left-1/2 top-[3cqw] flex h-[68cqw] w-[68cqw] -translate-x-1/2 items-start justify-center pt-[18cqw] rounded-full bg-[color:var(--sage)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
+                  <span className="text-center text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium leading-[1.3] font-medium text-[color:var(--ink)]/60">
+                    Enduring <br/> AI skills
                   </span>
                 </div>
                 <div className="absolute left-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--forest)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
-                  <span className="absolute bottom-[16cqw] left-[14cqw] text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-white/70">
-                    Care
+                  <span className="absolute bottom-[16cqw] left-[12cqw] text-center text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-white/70">
+                    Social <br/> impact
                   </span>
                 </div>
-                <div className="absolute right-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--moss)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
-                  <span className="absolute bottom-[14cqw] right-[12cqw] text-right text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium leading-tight text-white/70">
-                    Human
+                <div className="absolute right-[-5cqw] top-[42cqw] h-[68cqw] w-[68cqw] rounded-full bg-[color:var(--ink)]/75 shadow-[0_20px_50px_rgba(16,25,21,0.18)] mix-blend-multiply">
+                  <span className="absolute bottom-[16cqw] right-[12cqw] text-center text-[clamp(1.2rem,5.6cqw,1.95rem)] font-medium text-white/70">
+                    Cash
                     <br />
-                    Agency
+                    Support
                   </span>
                 </div>
                 <div className="font-display absolute left-1/2 top-[64cqw] z-10 flex h-[46cqw] w-[46cqw] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f7f2e7] text-center text-[clamp(1.15rem,5.8cqw,1.95rem)] font-bold text-[color:var(--forest)] shadow-[0_14px_30px_rgba(16,25,21,0.2)]">
                   <span className="leading-[1.2]">
-                    AI-fluent
-                    <br />
-                    Changemaker
+                    Purposeful Career Accelerator
                   </span>
                 </div>
               </div>
@@ -176,21 +239,20 @@ export default function OurProgramPage() {
             <h2 className="font-display text-4xl text-white md:text-5xl">
               Stand out with real impact on the society.
             </h2>
-            <p className="text-lg text-white/75 md:text-xl">
-              Everything is designed to help you ship real work, measure impact,
-              and build a career story that stands out.
-            </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {programFeatures.map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-3xl border border-white/15 bg-white/95 p-6 text-[color:var(--ink)] shadow-[0_18px_40px_rgba(10,20,16,0.18)]"
+                className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/95 p-6 text-[color:var(--ink)] shadow-[0_18px_40px_rgba(10,20,16,0.18)]"
               >
-                <h3 className="font-display text-2xl text-[color:var(--ink)] md:text-3xl">
+                <div className="pointer-events-none absolute -right-4 -top-6 text-[color:var(--forest)]/10">
+                  {renderFeatureWatermark(feature.icon)}
+                </div>
+                <h3 className="relative z-10 font-display text-2xl text-[color:var(--ink)] md:text-3xl">
                   {feature.title}
                 </h3>
-                <p className="mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
+                <p className="relative z-10 mt-3 text-base text-[color:var(--ink)]/70 md:text-lg">
                   {feature.description}
                 </p>
               </div>
@@ -304,7 +366,7 @@ export default function OurProgramPage() {
                   As an AI-fluent changemaker, you will develop future-proof skills such as proactive problem solving and applied AI fluency. These capabilities will enable you to create disproportionate value in any field, whether nonprofit leadership, entrepreneurship, consulting, finance, or technology.
                 </p>
                 <p className="mt-3 text-sm text-[color:var(--ink)]/70 md:text-base">
-                  Beyond technical skills, the program's social-impact focus equips you with the mindset and tools to pursue a more purposeful career. No matter which path you choose, you will learn how to translate your work into meaningful impact within your own communities.
+                  Beyond technical skills, the program&apos;s social-impact focus equips you with the mindset and tools to pursue a more purposeful career. No matter which path you choose, you will learn how to translate your work into meaningful impact within your own communities.
                 </p>
               </details>
               <details className="rounded-2xl border border-[color:var(--stone)]/70 bg-white/80 p-5">

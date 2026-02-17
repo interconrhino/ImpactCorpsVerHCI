@@ -6,6 +6,7 @@ type InterestPayload = {
   school?: string;
   demographics?: string[];
   yearLevel?: string;
+  major?: string;
   socialProblem?: string;
   proceedWithoutRewards?: string;
 };
@@ -38,6 +39,7 @@ export async function POST(request: Request) {
     ? payload.demographics
     : [];
   const yearLevel = payload.yearLevel?.trim() || "";
+  const major = payload.major?.trim() || "";
   const proceedWithoutRewards = payload.proceedWithoutRewards?.trim() || "";
 
   if (
@@ -45,6 +47,7 @@ export async function POST(request: Request) {
     !email ||
     !school ||
     !yearLevel ||
+    !major ||
     demographics.length === 0 ||
     !proceedWithoutRewards
   ) {
@@ -69,6 +72,10 @@ export async function POST(request: Request) {
 
   if (yearLevel) {
     fields.YearLevel = yearLevel;
+  }
+
+  if (major) {
+    fields.Major = major;
   }
 
   if (payload.socialProblem?.trim()) {
