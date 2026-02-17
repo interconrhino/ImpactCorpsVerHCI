@@ -97,9 +97,7 @@ const createSignedServiceAccountJwt = (
 };
 
 const getGoogleAccessToken = async (signal?: AbortSignal) => {
-  const hasValidCachedToken =
-    cachedToken && Date.now() < cachedToken.expiresAtMs - 60_000;
-  if (hasValidCachedToken) {
+  if (cachedToken && Date.now() < cachedToken.expiresAtMs - 60_000) {
     return cachedToken.value;
   }
 
