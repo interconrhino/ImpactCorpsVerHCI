@@ -10,6 +10,7 @@ type FormState = {
   demographics: string[];
   yearLevel: string;
   major: string;
+  pastExperience: string;
   socialProblem: string;
   proceedWithoutRewards: string;
 };
@@ -32,6 +33,7 @@ export default function JoinPage() {
     demographics: [],
     yearLevel: "",
     major: "",
+    pastExperience: "",
     socialProblem: "",
     proceedWithoutRewards: "",
   });
@@ -120,6 +122,7 @@ export default function JoinPage() {
         demographics: [],
         yearLevel: "",
         major: "",
+        pastExperience: "",
         socialProblem: "",
         proceedWithoutRewards: "",
       });
@@ -319,8 +322,23 @@ export default function JoinPage() {
                 </div>
 
                 <div>
+                  <label className="text-sm font-semibold" htmlFor="pastExperience">
+                    Optional: Past experience with using technology or tackling social challenges (this section does not affect selection).
+                  </label>
+                  <textarea
+                    id="pastExperience"
+                    name="pastExperience"
+                    value={formState.pastExperience}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
+                    rows={4}
+                    placeholder="Share any relevant projects, volunteer work, clubs, hackathons, or initiatives."
+                  />
+                </div>
+
+                <div>
                   <label className="text-sm font-semibold" htmlFor="socialProblem">
-                    Social problem in mind (optional)
+                    Optional: Social problem in mind
                   </label>
                   <textarea
                     id="socialProblem"

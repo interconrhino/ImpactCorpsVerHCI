@@ -7,6 +7,7 @@ type InterestPayload = {
   demographics?: string[];
   yearLevel?: string;
   major?: string;
+  pastExperience?: string;
   socialProblem?: string;
   proceedWithoutRewards?: string;
 };
@@ -76,6 +77,10 @@ export async function POST(request: Request) {
 
   if (major) {
     fields.Major = major;
+  }
+
+  if (payload.pastExperience?.trim()) {
+    fields.PastExperience = payload.pastExperience.trim();
   }
 
   if (payload.socialProblem?.trim()) {
