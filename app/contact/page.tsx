@@ -13,6 +13,9 @@ type FormState = {
 };
 
 export default function ContactPage() {
+  const GENERIC_SUBMIT_ERROR =
+    "We could not submit your form right now. Please try again later.";
+
   const [formState, setFormState] = useState<FormState>({
     name: "",
     email: "",
@@ -71,12 +74,18 @@ export default function ContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
       });
-
-      const payload = await response.json();
+      let payload: { error?: string } | null = null;
+      try {
+        payload = await response.json();
+      } catch {
+        payload = null;
+      }
       if (!response.ok) {
-        throw new Error(
-          payload?.error || "Something went wrong. Please try again."
-        );
+        const errorMessage =
+          response.status >= 500
+            ? GENERIC_SUBMIT_ERROR
+            : payload?.error || "Please review your form and try again.";
+        throw new Error(errorMessage);
       }
 
       setStatus("success");
@@ -92,9 +101,7 @@ export default function ContactPage() {
     } catch (error) {
       setStatus("error");
       setMessage(
-        error instanceof Error
-          ? error.message
-          : "We could not submit the form. Please try again."
+        error instanceof Error ? error.message : GENERIC_SUBMIT_ERROR
       );
     }
   };

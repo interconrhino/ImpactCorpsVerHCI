@@ -26,6 +26,10 @@ const demographicOptions = [
 ];
 
 export default function JoinPage() {
+  const MAX_OPTIONAL_TEXT_LENGTH = 500;
+  const GENERIC_SUBMIT_ERROR =
+    "We could not submit your form right now. Please try again later.";
+
   const [formState, setFormState] = useState<FormState>({
     name: "",
     email: "",
@@ -79,6 +83,12 @@ export default function JoinPage() {
     if (!formState.major.trim()) {
       return "Please enter your current major or intended field of study.";
     }
+    if (formState.pastExperience.trim().length > MAX_OPTIONAL_TEXT_LENGTH) {
+      return "Please keep past experience within 500 characters.";
+    }
+    if (formState.socialProblem.trim().length > MAX_OPTIONAL_TEXT_LENGTH) {
+      return "Please keep social problem within 500 characters.";
+    }
     if (formState.demographics.length === 0) {
       return "Please select at least one demographic.";
     }
@@ -105,12 +115,18 @@ export default function JoinPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
       });
-
-      const payload = await response.json();
+      let payload: { error?: string } | null = null;
+      try {
+        payload = await response.json();
+      } catch {
+        payload = null;
+      }
       if (!response.ok) {
-        throw new Error(
-          payload?.error || "Something went wrong. Please try again."
-        );
+        const errorMessage =
+          response.status >= 500
+            ? GENERIC_SUBMIT_ERROR
+            : payload?.error || "Please review your form and try again.";
+        throw new Error(errorMessage);
       }
 
       setStatus("success");
@@ -129,9 +145,7 @@ export default function JoinPage() {
     } catch (error) {
       setStatus("error");
       setMessage(
-        error instanceof Error
-          ? error.message
-          : "We could not submit the form. Please try again."
+        error instanceof Error ? error.message : GENERIC_SUBMIT_ERROR
       );
     }
   };
@@ -332,8 +346,12 @@ export default function JoinPage() {
                     onChange={handleChange}
                     className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
                     rows={4}
+                    maxLength={MAX_OPTIONAL_TEXT_LENGTH}
                     placeholder="Share any relevant projects, volunteer work, clubs, hackathons, or initiatives."
                   />
+                  <p className="mt-1 text-right text-xs text-[color:var(--ink)]/55">
+                    {formState.pastExperience.length}/{MAX_OPTIONAL_TEXT_LENGTH}
+                  </p>
                 </div>
 
                 <div>
@@ -347,8 +365,12 @@ export default function JoinPage() {
                     onChange={handleChange}
                     className="mt-2 w-full rounded-2xl border border-[color:var(--stone)]/80 bg-white px-4 py-3 text-sm focus:border-[color:var(--moss)] focus:outline-none"
                     rows={4}
+                    maxLength={MAX_OPTIONAL_TEXT_LENGTH}
                     placeholder="Share a challenge in your community you want to tackle."
                   />
+                  <p className="mt-1 text-right text-xs text-[color:var(--ink)]/55">
+                    {formState.socialProblem.length}/{MAX_OPTIONAL_TEXT_LENGTH}
+                  </p>
                 </div>
 
                 {message ? (

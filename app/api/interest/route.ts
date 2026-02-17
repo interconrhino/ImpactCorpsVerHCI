@@ -13,6 +13,9 @@ type InterestPayload = {
 };
 
 const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const MAX_OPTIONAL_TEXT_LENGTH = 500;
+const GENERIC_SUBMIT_ERROR =
+  "Unable to submit your request right now. Please try again later.";
 
 export async function POST(request: Request) {
   const apiKey = process.env.AIRTABLE_API_KEY;
@@ -20,10 +23,8 @@ export async function POST(request: Request) {
   const tableName = process.env.AIRTABLE_TABLE_NAME || "Interest";
 
   if (!apiKey || !baseId) {
-    return NextResponse.json(
-      { error: "Missing Airtable configuration." },
-      { status: 500 }
-    );
+    console.error("Interest form misconfigured: missing Airtable env vars.");
+    return NextResponse.json({ error: GENERIC_SUBMIT_ERROR }, { status: 500 });
   }
 
   let payload: InterestPayload;
@@ -41,6 +42,8 @@ export async function POST(request: Request) {
     : [];
   const yearLevel = payload.yearLevel?.trim() || "";
   const major = payload.major?.trim() || "";
+  const pastExperience = payload.pastExperience?.trim() || "";
+  const socialProblem = payload.socialProblem?.trim() || "";
   const proceedWithoutRewards = payload.proceedWithoutRewards?.trim() || "";
 
   if (
@@ -59,6 +62,18 @@ export async function POST(request: Request) {
   }
   if (!isValidEmail(email)) {
     return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+  }
+  if (pastExperience.length > MAX_OPTIONAL_TEXT_LENGTH) {
+    return NextResponse.json(
+      { error: "Past experience must be 500 characters or fewer." },
+      { status: 400 }
+    );
+  }
+  if (socialProblem.length > MAX_OPTIONAL_TEXT_LENGTH) {
+    return NextResponse.json(
+      { error: "Social problem must be 500 characters or fewer." },
+      { status: 400 }
+    );
   }
 
   const fields: Record<string, string | string[]> = {
@@ -79,12 +94,12 @@ export async function POST(request: Request) {
     fields.Major = major;
   }
 
-  if (payload.pastExperience?.trim()) {
-    fields.PastExperience = payload.pastExperience.trim();
+  if (pastExperience) {
+    fields.PastExperience = pastExperience;
   }
 
-  if (payload.socialProblem?.trim()) {
-    fields.SocialProblem = payload.socialProblem.trim();
+  if (socialProblem) {
+    fields.SocialProblem = socialProblem;
   }
 
   try {
@@ -104,27 +119,16 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      let message = "Failed to submit interest.";
-      try {
-        const errorBody = JSON.parse(errorText);
-        if (typeof errorBody?.error?.message === "string") {
-          message = errorBody.error.message;
-        } else if (typeof errorBody?.error === "string") {
-          message = errorBody.error;
-        }
-      } catch {
-        if (errorText.trim()) {
-          message = errorText.trim().slice(0, 200);
-        }
-      }
-      return NextResponse.json({ error: message }, { status: 502 });
+      console.error("Airtable interest submit failed", {
+        status: response.status,
+        body: errorText.slice(0, 500),
+      });
+      return NextResponse.json({ error: GENERIC_SUBMIT_ERROR }, { status: 502 });
     }
 
     return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json(
-      { error: "Unable to reach Airtable." },
-      { status: 502 }
-    );
+  } catch (error) {
+    console.error("Airtable interest submit exception", error);
+    return NextResponse.json({ error: GENERIC_SUBMIT_ERROR }, { status: 502 });
   }
 }

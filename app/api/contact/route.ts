@@ -10,6 +10,8 @@ type ContactPayload = {
 };
 
 const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const GENERIC_SUBMIT_ERROR =
+  "Unable to submit your request right now. Please try again later.";
 
 export async function POST(request: Request) {
   const apiKey = process.env.AIRTABLE_API_KEY;
@@ -17,10 +19,8 @@ export async function POST(request: Request) {
   const tableName = process.env.AIRTABLE_TABLE_NAME2;
 
   if (!apiKey || !baseId || !tableName) {
-    return NextResponse.json(
-      { error: "Missing Airtable configuration." },
-      { status: 500 }
-    );
+    console.error("Contact form misconfigured: missing Airtable env vars.");
+    return NextResponse.json({ error: GENERIC_SUBMIT_ERROR }, { status: 500 });
   }
 
   let payload: ContactPayload;
@@ -81,27 +81,16 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      let message = "Failed to submit message.";
-      try {
-        const errorBody = JSON.parse(errorText);
-        if (typeof errorBody?.error?.message === "string") {
-          message = errorBody.error.message;
-        } else if (typeof errorBody?.error === "string") {
-          message = errorBody.error;
-        }
-      } catch {
-        if (errorText.trim()) {
-          message = errorText.trim().slice(0, 200);
-        }
-      }
-      return NextResponse.json({ error: message }, { status: 502 });
+      console.error("Airtable contact submit failed", {
+        status: response.status,
+        body: errorText.slice(0, 500),
+      });
+      return NextResponse.json({ error: GENERIC_SUBMIT_ERROR }, { status: 502 });
     }
 
     return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json(
-      { error: "Unable to reach Airtable." },
-      { status: 502 }
-    );
+  } catch (error) {
+    console.error("Airtable contact submit exception", error);
+    return NextResponse.json({ error: GENERIC_SUBMIT_ERROR }, { status: 502 });
   }
 }

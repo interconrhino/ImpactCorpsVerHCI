@@ -35,7 +35,7 @@ export default function OurProgramPage() {
       icon: "build",
       title: "Learning by building",
       description:
-        "Develop problem-solving and AI skills throughb real projects.",
+        "Develop problem-solving and AI skills through real projects.",
     },
     {
       icon: "reward",
